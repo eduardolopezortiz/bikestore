@@ -11,8 +11,8 @@
   DTS:LocaleID="2058"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="20"
-  DTS:VersionGUID="{97B70DDC-9E49-4B48-80A9-2637BBAE2B57}">
+  DTS:VersionBuild="25"
+  DTS:VersionGUID="{30D728CF-FDAC-4C37-8248-598EC3C5A6FD}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -38,6 +38,43 @@
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
           DTS:ConnectionString="Data Source=DESKTOP-DE6LJ3M\SQLSERVER;Initial Catalog=bikestoreSTAGE;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package-{39BC5856-188C-4DC6-8C9E-12E2A8D5EC5E}DESKTOP-DE6LJ3M\SQLSERVER.bikestoreSTAGE;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{DF8C21DC-BB9D-44AB-9130-D84471685F9A}"
+      DTS:ObjectName="Flat File Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="2058"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\SQL2019\origenes\Metodo_pago.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="id_pago"
+              DTS:DTSID="{B1D14767-0662-46D2-A46B-544A454A6B36}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="M_pago"
+              DTS:DTSID="{2442AE6D-8CC9-46E3-A997-176341F59A16}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -213,6 +250,182 @@
                   </outputs>
                 </component>
                 <component
+                  refId="Package\CATEGORIAS\DFT_INS_UPD\CategoriesSTG"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="CategoriesSTG"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[production].[categoriesSTG]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">true</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\CATEGORIAS\DFT_INS_UPD\CategoriesSTG.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DESKTOP-DE6LJ3M\SQLSERVER.bikestoreSTAGE]"
+                      connectionManagerRefId="Package.ConnectionManagers[DESKTOP-DE6LJ3M\SQLSERVER.bikestoreSTAGE]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\CATEGORIAS\DFT_INS_UPD\CategoriesSTG.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\CATEGORIAS\DFT_INS_UPD\CategoriesSTG.Inputs[OLE DB Destination Input].Columns[category_id]"
+                          cachedDataType="i4"
+                          cachedName="category_id"
+                          externalMetadataColumnId="Package\CATEGORIAS\DFT_INS_UPD\CategoriesSTG.Inputs[OLE DB Destination Input].ExternalColumns[category_id]"
+                          lineageId="Package\CATEGORIAS\DFT_INS_UPD\categories.Outputs[OLE DB Source Output].Columns[category_id]" />
+                        <inputColumn
+                          refId="Package\CATEGORIAS\DFT_INS_UPD\CategoriesSTG.Inputs[OLE DB Destination Input].Columns[category_name]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="255"
+                          cachedName="category_name"
+                          externalMetadataColumnId="Package\CATEGORIAS\DFT_INS_UPD\CategoriesSTG.Inputs[OLE DB Destination Input].ExternalColumns[category_name]"
+                          lineageId="Package\CATEGORIAS\DFT_INS_UPD\categories.Outputs[OLE DB Source Output].Columns[category_name]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\CATEGORIAS\DFT_INS_UPD\CategoriesSTG.Inputs[OLE DB Destination Input].ExternalColumns[category_id]"
+                          dataType="i4"
+                          name="category_id" />
+                        <externalMetadataColumn
+                          refId="Package\CATEGORIAS\DFT_INS_UPD\CategoriesSTG.Inputs[OLE DB Destination Input].ExternalColumns[category_name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="255"
+                          name="category_name" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\CATEGORIAS\DFT_INS_UPD\CategoriesSTG.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\CATEGORIAS\DFT_INS_UPD\CategoriesSTG.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\CATEGORIAS\DFT_INS_UPD\CategoriesSTG.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\CATEGORIAS\DFT_INS_UPD\CategoriesSTG.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\CATEGORIAS\DFT_INS_UPD\CategoriesSTG.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\CATEGORIAS\DFT_INS_UPD\CategoriesSTG.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\CATEGORIAS\DFT_INS_UPD\Derived Column"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Derived Column"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\CATEGORIAS\DFT_INS_UPD\Derived Column.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\CATEGORIAS\DFT_INS_UPD\Derived Column.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\CATEGORIAS\DFT_INS_UPD\Derived Column.Inputs[Derived Column Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\CATEGORIAS\DFT_INS_UPD\Derived Column.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\CATEGORIAS\DFT_INS_UPD\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\CATEGORIAS\DFT_INS_UPD\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\CATEGORIAS\DFT_INS_UPD\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\CATEGORIAS\DFT_INS_UPD\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\CATEGORIAS\DFT_INS_UPD\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
                   refId="Package\CATEGORIAS\DFT_INS_UPD\Lookup"
                   componentClassID="Microsoft.Lookup"
                   contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
@@ -321,11 +534,11 @@ where [refTable].[category_id] = ?</property>
                       synchronousInputId="Package\CATEGORIAS\DFT_INS_UPD\Lookup.Inputs[Lookup Input]">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\CATEGORIAS\DFT_INS_UPD\Lookup.Outputs[Lookup Match Output].Columns[category_id]"
+                          refId="Package\CATEGORIAS\DFT_INS_UPD\Lookup.Outputs[Lookup Match Output].Columns[LKPcategory_id]"
                           dataType="i4"
                           errorOrTruncationOperation="Copy Column"
-                          lineageId="Package\CATEGORIAS\DFT_INS_UPD\Lookup.Outputs[Lookup Match Output].Columns[category_id]"
-                          name="category_id"
+                          lineageId="Package\CATEGORIAS\DFT_INS_UPD\Lookup.Outputs[Lookup Match Output].Columns[LKPcategory_id]"
+                          name="LKPcategory_id"
                           truncationRowDisposition="FailComponent">
                           <properties>
                             <property
@@ -335,13 +548,13 @@ where [refTable].[category_id] = ?</property>
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\CATEGORIAS\DFT_INS_UPD\Lookup.Outputs[Lookup Match Output].Columns[category_name]"
+                          refId="Package\CATEGORIAS\DFT_INS_UPD\Lookup.Outputs[Lookup Match Output].Columns[LKPcategory_name]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Copy Column"
                           length="255"
-                          lineageId="Package\CATEGORIAS\DFT_INS_UPD\Lookup.Outputs[Lookup Match Output].Columns[category_name]"
-                          name="category_name"
+                          lineageId="Package\CATEGORIAS\DFT_INS_UPD\Lookup.Outputs[Lookup Match Output].Columns[LKPcategory_name]"
+                          name="LKPcategory_name"
                           truncationRowDisposition="FailComponent">
                           <properties>
                             <property
@@ -385,13 +598,260 @@ where [refTable].[category_id] = ?</property>
                     </output>
                   </outputs>
                 </component>
+                <component
+                  refId="Package\CATEGORIAS\DFT_INS_UPD\OLE DB Command"
+                  componentClassID="Microsoft.OLEDBCommand"
+                  contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+                  description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+                  name="OLE DB Command"
+                  usesDispositions="true"
+                  version="2">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">UPDATE production.categoriesSTG 
+SET 
+category_name = ?
+WHERE category_id = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\CATEGORIAS\DFT_INS_UPD\OLE DB Command.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DESKTOP-DE6LJ3M\SQLSERVER.bikestoreSTAGE]"
+                      connectionManagerRefId="Package.ConnectionManagers[DESKTOP-DE6LJ3M\SQLSERVER.bikestoreSTAGE]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\CATEGORIAS\DFT_INS_UPD\OLE DB Command.Inputs[OLE DB Command Input]"
+                      errorOrTruncationOperation="Command Execution"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Command Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\CATEGORIAS\DFT_INS_UPD\OLE DB Command.Inputs[OLE DB Command Input].Columns[category_id]"
+                          cachedDataType="i4"
+                          cachedName="category_id"
+                          externalMetadataColumnId="Package\CATEGORIAS\DFT_INS_UPD\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                          lineageId="Package\CATEGORIAS\DFT_INS_UPD\categories.Outputs[OLE DB Source Output].Columns[category_id]" />
+                        <inputColumn
+                          refId="Package\CATEGORIAS\DFT_INS_UPD\OLE DB Command.Inputs[OLE DB Command Input].Columns[category_name]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="255"
+                          cachedName="category_name"
+                          externalMetadataColumnId="Package\CATEGORIAS\DFT_INS_UPD\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                          lineageId="Package\CATEGORIAS\DFT_INS_UPD\categories.Outputs[OLE DB Source Output].Columns[category_name]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\CATEGORIAS\DFT_INS_UPD\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                          codePage="1252"
+                          dataType="str"
+                          length="255"
+                          name="Param_0">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\CATEGORIAS\DFT_INS_UPD\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                          dataType="i4"
+                          name="Param_1">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">81</property>
+                          </properties>
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\CATEGORIAS\DFT_INS_UPD\OLE DB Command.Outputs[OLE DB Command Output]"
+                      exclusionGroup="1"
+                      name="OLE DB Command Output"
+                      synchronousInputId="Package\CATEGORIAS\DFT_INS_UPD\OLE DB Command.Inputs[OLE DB Command Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\CATEGORIAS\DFT_INS_UPD\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Command Error Output"
+                      synchronousInputId="Package\CATEGORIAS\DFT_INS_UPD\OLE DB Command.Inputs[OLE DB Command Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\CATEGORIAS\DFT_INS_UPD\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\CATEGORIAS\DFT_INS_UPD\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\CATEGORIAS\DFT_INS_UPD\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\CATEGORIAS\DFT_INS_UPD\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\CATEGORIAS\DFT_INS_UPD\UPDATE"
+                  componentClassID="Microsoft.ConditionalSplit"
+                  contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+                  name="UPDATE"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\CATEGORIAS\DFT_INS_UPD\UPDATE.Inputs[Conditional Split Input]"
+                      description="Input to the Conditional Split Transformation"
+                      name="Conditional Split Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\CATEGORIAS\DFT_INS_UPD\UPDATE.Inputs[Conditional Split Input].Columns[category_id]"
+                          cachedDataType="i4"
+                          cachedName="category_id"
+                          lineageId="Package\CATEGORIAS\DFT_INS_UPD\categories.Outputs[OLE DB Source Output].Columns[category_id]" />
+                        <inputColumn
+                          refId="Package\CATEGORIAS\DFT_INS_UPD\UPDATE.Inputs[Conditional Split Input].Columns[category_name]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="255"
+                          cachedName="category_name"
+                          lineageId="Package\CATEGORIAS\DFT_INS_UPD\categories.Outputs[OLE DB Source Output].Columns[category_name]" />
+                        <inputColumn
+                          refId="Package\CATEGORIAS\DFT_INS_UPD\UPDATE.Inputs[Conditional Split Input].Columns[LKPcategory_id]"
+                          cachedDataType="i4"
+                          cachedName="LKPcategory_id"
+                          lineageId="Package\CATEGORIAS\DFT_INS_UPD\Lookup.Outputs[Lookup Match Output].Columns[LKPcategory_id]" />
+                        <inputColumn
+                          refId="Package\CATEGORIAS\DFT_INS_UPD\UPDATE.Inputs[Conditional Split Input].Columns[LKPcategory_name]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="255"
+                          cachedName="LKPcategory_name"
+                          lineageId="Package\CATEGORIAS\DFT_INS_UPD\Lookup.Outputs[Lookup Match Output].Columns[LKPcategory_name]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\CATEGORIAS\DFT_INS_UPD\UPDATE.Outputs[UPDATE]"
+                      description="Output 1 of the Conditional Split Transformation"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      exclusionGroup="1"
+                      name="UPDATE"
+                      synchronousInputId="Package\CATEGORIAS\DFT_INS_UPD\UPDATE.Inputs[Conditional Split Input]"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                          name="Expression">#{Package\CATEGORIAS\DFT_INS_UPD\categories.Outputs[OLE DB Source Output].Columns[category_id]} != #{Package\CATEGORIAS\DFT_INS_UPD\Lookup.Outputs[Lookup Match Output].Columns[LKPcategory_id]} || #{Package\CATEGORIAS\DFT_INS_UPD\categories.Outputs[OLE DB Source Output].Columns[category_name]} != #{Package\CATEGORIAS\DFT_INS_UPD\Lookup.Outputs[Lookup Match Output].Columns[LKPcategory_name]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the friendly version of the expression. This expression version uses column names."
+                          expressionType="Notify"
+                          name="FriendlyExpression">category_id != LKPcategory_id || category_name != LKPcategory_name</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                          name="EvaluationOrder">0</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\CATEGORIAS\DFT_INS_UPD\UPDATE.Outputs[Conditional Split Default Output]"
+                      description="Default Output of the Conditional Split Transformation"
+                      exclusionGroup="1"
+                      name="Conditional Split Default Output"
+                      synchronousInputId="Package\CATEGORIAS\DFT_INS_UPD\UPDATE.Inputs[Conditional Split Input]">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsDefaultOut">true</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\CATEGORIAS\DFT_INS_UPD\UPDATE.Outputs[Conditional Split Error Output]"
+                      description="Error Output of the Conditional Split Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Conditional Split Error Output"
+                      synchronousInputId="Package\CATEGORIAS\DFT_INS_UPD\UPDATE.Inputs[Conditional Split Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\CATEGORIAS\DFT_INS_UPD\UPDATE.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\CATEGORIAS\DFT_INS_UPD\UPDATE.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\CATEGORIAS\DFT_INS_UPD\UPDATE.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\CATEGORIAS\DFT_INS_UPD\UPDATE.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
               </components>
               <paths>
+                <path
+                  refId="Package\CATEGORIAS\DFT_INS_UPD.Paths[Lookup Match Output]"
+                  endId="Package\CATEGORIAS\DFT_INS_UPD\UPDATE.Inputs[Conditional Split Input]"
+                  name="Lookup Match Output"
+                  startId="Package\CATEGORIAS\DFT_INS_UPD\Lookup.Outputs[Lookup Match Output]" />
+                <path
+                  refId="Package\CATEGORIAS\DFT_INS_UPD.Paths[Lookup No Match Output]"
+                  endId="Package\CATEGORIAS\DFT_INS_UPD\CategoriesSTG.Inputs[OLE DB Destination Input]"
+                  name="Lookup No Match Output"
+                  startId="Package\CATEGORIAS\DFT_INS_UPD\Lookup.Outputs[Lookup No Match Output]" />
+                <path
+                  refId="Package\CATEGORIAS\DFT_INS_UPD.Paths[OLE DB Command Output]"
+                  endId="Package\CATEGORIAS\DFT_INS_UPD\Derived Column.Inputs[Derived Column Input]"
+                  name="OLE DB Command Output"
+                  startId="Package\CATEGORIAS\DFT_INS_UPD\OLE DB Command.Outputs[OLE DB Command Output]" />
                 <path
                   refId="Package\CATEGORIAS\DFT_INS_UPD.Paths[OLE DB Source Output]"
                   endId="Package\CATEGORIAS\DFT_INS_UPD\Lookup.Inputs[Lookup Input]"
                   name="OLE DB Source Output"
                   startId="Package\CATEGORIAS\DFT_INS_UPD\categories.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\CATEGORIAS\DFT_INS_UPD.Paths[UPDATE]"
+                  endId="Package\CATEGORIAS\DFT_INS_UPD\OLE DB Command.Inputs[OLE DB Command Input]"
+                  name="UPDATE"
+                  startId="Package\CATEGORIAS\DFT_INS_UPD\UPDATE.Outputs[UPDATE]" />
               </paths>
             </pipeline>
           </DTS:ObjectData>
@@ -407,6 +867,20 @@ where [refTable].[category_id] = ?</property>
           DTS:ObjectName="Constraint"
           DTS:To="Package\CATEGORIAS\DFT_DELETE" />
       </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute SQL Task"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{CA818961-3418-485D-B232-710F929F1F7E}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Task"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\Sequence Container"
@@ -1782,6 +2256,275 @@ where [refTable].[category_id] = ?</property>
                   endId="Package\Sequence Container\DFT_factorySTG\factorySTG.Inputs[OLE DB Destination Input]"
                   name="OLE DB Source Output"
                   startId="Package\Sequence Container\DFT_factorySTG\factory.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\DFT_Metodo_Pago_Txt"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{9F0129A9-2833-4308-9B88-D5911B05EB37}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DFT_Metodo_Pago_Txt"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Sequence Container\DFT_Metodo_Pago_Txt\Metodopago"
+                  componentClassID="Microsoft.FlatFileSource"
+                  contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Flat File Source"
+                  localeId="2058"
+                  name="Metodopago"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies whether zero-length columns are treated as null."
+                      name="RetainNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                      name="FileNameColumnName"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\DFT_Metodo_Pago_Txt\Metodopago.Connections[FlatFileConnection]"
+                      connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager]"
+                      connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager]"
+                      name="FlatFileConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\DFT_Metodo_Pago_Txt\Metodopago.Outputs[Flat File Source Output]"
+                      name="Flat File Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT_Metodo_Pago_Txt\Metodopago.Outputs[Flat File Source Output].Columns[id_pago]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\DFT_Metodo_Pago_Txt\Metodopago.Outputs[Flat File Source Output].ExternalColumns[id_pago]"
+                          lineageId="Package\Sequence Container\DFT_Metodo_Pago_Txt\Metodopago.Outputs[Flat File Source Output].Columns[id_pago]"
+                          name="id_pago"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT_Metodo_Pago_Txt\Metodopago.Outputs[Flat File Source Output].Columns[M_pago]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\DFT_Metodo_Pago_Txt\Metodopago.Outputs[Flat File Source Output].ExternalColumns[M_pago]"
+                          length="50"
+                          lineageId="Package\Sequence Container\DFT_Metodo_Pago_Txt\Metodopago.Outputs[Flat File Source Output].Columns[M_pago]"
+                          name="M_pago"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT_Metodo_Pago_Txt\Metodopago.Outputs[Flat File Source Output].ExternalColumns[id_pago]"
+                          dataType="i4"
+                          name="id_pago" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT_Metodo_Pago_Txt\Metodopago.Outputs[Flat File Source Output].ExternalColumns[M_pago]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="M_pago" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Sequence Container\DFT_Metodo_Pago_Txt\Metodopago.Outputs[Flat File Source Error Output]"
+                      isErrorOut="true"
+                      name="Flat File Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT_Metodo_Pago_Txt\Metodopago.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          codePage="1252"
+                          dataType="text"
+                          description="Flat File Source Error Output Column"
+                          lineageId="Package\Sequence Container\DFT_Metodo_Pago_Txt\Metodopago.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          name="Flat File Source Error Output Column" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT_Metodo_Pago_Txt\Metodopago.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\DFT_Metodo_Pago_Txt\Metodopago.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT_Metodo_Pago_Txt\Metodopago.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\DFT_Metodo_Pago_Txt\Metodopago.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence Container\DFT_Metodo_Pago_Txt\MetodopagoSTG"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="MetodopagoSTG"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[MetodopagoSTG]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\DFT_Metodo_Pago_Txt\MetodopagoSTG.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DESKTOP-DE6LJ3M\SQLSERVER.bikestoreSTAGE]"
+                      connectionManagerRefId="Package.ConnectionManagers[DESKTOP-DE6LJ3M\SQLSERVER.bikestoreSTAGE]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Sequence Container\DFT_Metodo_Pago_Txt\MetodopagoSTG.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT_Metodo_Pago_Txt\MetodopagoSTG.Inputs[OLE DB Destination Input].Columns[id_pago]"
+                          cachedDataType="i4"
+                          cachedName="id_pago"
+                          externalMetadataColumnId="Package\Sequence Container\DFT_Metodo_Pago_Txt\MetodopagoSTG.Inputs[OLE DB Destination Input].ExternalColumns[id_pago]"
+                          lineageId="Package\Sequence Container\DFT_Metodo_Pago_Txt\Metodopago.Outputs[Flat File Source Output].Columns[id_pago]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\DFT_Metodo_Pago_Txt\MetodopagoSTG.Inputs[OLE DB Destination Input].Columns[M_pago]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="M_pago"
+                          externalMetadataColumnId="Package\Sequence Container\DFT_Metodo_Pago_Txt\MetodopagoSTG.Inputs[OLE DB Destination Input].ExternalColumns[M_pago]"
+                          lineageId="Package\Sequence Container\DFT_Metodo_Pago_Txt\Metodopago.Outputs[Flat File Source Output].Columns[M_pago]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT_Metodo_Pago_Txt\MetodopagoSTG.Inputs[OLE DB Destination Input].ExternalColumns[id_pago]"
+                          dataType="i4"
+                          name="id_pago" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\DFT_Metodo_Pago_Txt\MetodopagoSTG.Inputs[OLE DB Destination Input].ExternalColumns[M_pago]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="M_pago" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\DFT_Metodo_Pago_Txt\MetodopagoSTG.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Sequence Container\DFT_Metodo_Pago_Txt\MetodopagoSTG.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT_Metodo_Pago_Txt\MetodopagoSTG.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\DFT_Metodo_Pago_Txt\MetodopagoSTG.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\DFT_Metodo_Pago_Txt\MetodopagoSTG.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\DFT_Metodo_Pago_Txt\MetodopagoSTG.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Sequence Container\DFT_Metodo_Pago_Txt.Paths[Flat File Source Output]"
+                  endId="Package\Sequence Container\DFT_Metodo_Pago_Txt\MetodopagoSTG.Inputs[OLE DB Destination Input]"
+                  name="Flat File Source Output"
+                  startId="Package\Sequence Container\DFT_Metodo_Pago_Txt\Metodopago.Outputs[Flat File Source Output]" />
               </paths>
             </pipeline>
           </DTS:ObjectData>
@@ -4582,6 +5325,24 @@ where [refTable].[category_id] = ?</property>
       </DTS:Executables>
     </DTS:Executable>
   </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{6E736F39-F781-4696-9445-4BD6A3C4E17C}"
+      DTS:From="Package\Execute SQL Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\CATEGORIAS" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{7273AFD5-68D1-4AC5-BDDD-496C8337C643}"
+      DTS:From="Package\CATEGORIAS"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Sequence Container" />
+  </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
 <!--If you manually edit this section and make a mistake, you can delete it. -->
@@ -4593,7 +5354,7 @@ where [refTable].[category_id] = ?</property>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="140,42"
           Id="Package\CATEGORIAS\DFT_DELETE"
@@ -4642,50 +5403,126 @@ where [refTable].[category_id] = ?</property>
           PanelSize="205,224"
           Size="205,267"
           Id="Package\CATEGORIAS"
-          TopLeft="86.4285729004414,70.352942163144" />
+          TopLeft="92.4285729004414,139.352942163144" />
         <NodeLayout
           Size="173,42"
           Id="Package\Sequence Container\DF_order_itemsSTG"
           TopLeft="224,8" />
         <NodeLayout
-          Size="153,42"
-          Id="Package\Sequence Container\DFT_ordersSTG"
-          TopLeft="231.000006386212,72.5" />
-        <NodeLayout
-          Size="145,42"
-          Id="Package\Sequence Container\DFT_StaffSTG"
-          TopLeft="225,132" />
-        <NodeLayout
-          Size="153,42"
-          Id="Package\Sequence Container\DFT_StoresSTG"
-          TopLeft="222,217" />
-        <NodeLayout
           Size="155,42"
           Id="Package\Sequence Container\DFT_BrandsSTG"
           TopLeft="21,13" />
+        <NodeLayout
+          Size="153,42"
+          Id="Package\Sequence Container\DFT_Customers"
+          TopLeft="32,285" />
         <NodeLayout
           Size="156,42"
           Id="Package\Sequence Container\DFT_factorySTG"
           TopLeft="22,76" />
         <NodeLayout
+          Size="153,42"
+          Id="Package\Sequence Container\DFT_ordersSTG"
+          TopLeft="231.000006386212,72.5" />
+        <NodeLayout
           Size="144,42"
           Id="Package\Sequence Container\DFT_Products"
           TopLeft="25,149" />
+        <NodeLayout
+          Size="145,42"
+          Id="Package\Sequence Container\DFT_StaffSTG"
+          TopLeft="225,132" />
         <NodeLayout
           Size="133,42"
           Id="Package\Sequence Container\DFT_stocks"
           TopLeft="38,216" />
         <NodeLayout
           Size="153,42"
-          Id="Package\Sequence Container\DFT_Customers"
-          TopLeft="32,285" />
+          Id="Package\Sequence Container\DFT_StoresSTG"
+          TopLeft="222,217" />
+        <NodeLayout
+          Size="189,42"
+          Id="Package\Sequence Container\DFT_Metodo_Pago_Txt"
+          TopLeft="233,289" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
           PanelSize="457,431"
           Size="457,474"
           Id="Package\Sequence Container"
-          TopLeft="396,87" />
+          TopLeft="395,62" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Execute SQL Task"
+          TopLeft="136,30" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="217.5,72">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-22.5714270995586,67.352942163144"
+              Start="0,0"
+              End="-22.5714270995586,59.852942163144">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.676471081572" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.676471081572"
+                    Point2="0,33.676471081572"
+                    Point3="-4,33.676471081572" />
+                  <mssgle:LineSegment
+                    End="-18.5714270995586,33.676471081572" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-18.5714270995586,33.676471081572"
+                    Point2="-22.5714270995586,33.676471081572"
+                    Point3="-22.5714270995586,37.676471081572" />
+                  <mssgle:LineSegment
+                    End="-22.5714270995586,59.852942163144" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="297.428572900441,272.852942163144">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="97.5714270995586,26.147057836856"
+              Start="0,0"
+              End="90.0714270995586,26.147057836856">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="44.7857135497793,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="44.7857135497793,0"
+                    Point2="48.7857135497793,0"
+                    Point3="48.7857135497793,4" />
+                  <mssgle:LineSegment
+                    End="48.7857135497793,22.147057836856" />
+                  <mssgle:CubicBezierSegment
+                    Point1="48.7857135497793,22.147057836856"
+                    Point2="48.7857135497793,26.147057836856"
+                    Point3="52.7857135497793,26.147057836856" />
+                  <mssgle:LineSegment
+                    End="90.0714270995586,26.147057836856" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -4693,7 +5530,7 @@ where [refTable].[category_id] = ?</property>
     design-time-name="Package\CATEGORIAS\DFT_INS_UPD">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="127,42"
           Id="Package\CATEGORIAS\DFT_INS_UPD\categories"
@@ -4715,21 +5552,21 @@ where [refTable].[category_id] = ?</property>
         <NodeLayout
           Size="113,42"
           Id="Package\CATEGORIAS\DFT_INS_UPD\Lookup"
-          TopLeft="176,230" />
+          TopLeft="173,215" />
         <EdgeLayout
           Id="Package\CATEGORIAS\DFT_INS_UPD.Paths[OLE DB Source Output]"
-          TopLeft="229.5,133">
+          TopLeft="228,133">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,97"
+              EndConnector="0,82"
               Start="0,0"
-              End="0,89.5">
+              End="0,74.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,89.5" />
+                    End="0,74.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4738,9 +5575,177 @@ where [refTable].[category_id] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="148,42"
+          Id="Package\CATEGORIAS\DFT_INS_UPD\CategoriesSTG"
+          TopLeft="154,339" />
+        <AnnotationLayout
+          Text="BikeStores STAGE"
+          ParentId="Package\CATEGORIAS\DFT_INS_UPD"
+          FontInfo="{assembly:Null}"
+          Size="121,60"
+          Id="a19746e6-b633-4599-a1e9-7fed95920f95"
+          TopLeft="24,345" />
+        <EdgeLayout
+          Id="Package\CATEGORIAS\DFT_INS_UPD.Paths[Lookup No Match Output]"
+          TopLeft="228.75,257">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,82"
+              Start="0,0"
+              End="0,74.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,74.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-55.80638671875,31.4453125,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="118,42"
+          Id="Package\CATEGORIAS\DFT_INS_UPD\UPDATE"
+          TopLeft="443,219" />
+        <EdgeLayout
+          Id="Package\CATEGORIAS\DFT_INS_UPD.Paths[Lookup Match Output]"
+          TopLeft="286,238">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="157,0"
+              Start="0,0"
+              End="149.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="149.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="26.55861328125,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="166,42"
+          Id="Package\CATEGORIAS\DFT_INS_UPD\OLE DB Command"
+          TopLeft="416,335" />
+        <EdgeLayout
+          Id="Package\CATEGORIAS\DFT_INS_UPD.Paths[UPDATE]"
+          TopLeft="500.5,261">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,74"
+              Start="0,0"
+              End="0,66.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,66.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-18.66189453125,28.5390625,37.3237890625,9.421875"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="154,42"
+          Id="Package\CATEGORIAS\DFT_INS_UPD\Derived Column"
+          TopLeft="426,425" />
+        <EdgeLayout
+          Id="Package\CATEGORIAS\DFT_INS_UPD.Paths[OLE DB Command Output]"
+          TopLeft="501,377">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48"
+              Start="0,0"
+              End="0,40.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,12.25,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\CATEGORIAS\DFT_INS_UPD\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[production].[categoriesSTG]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\CATEGORIAS\DFT_INS_UPD\CategoriesSTG">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\CATEGORIAS\DFT_INS_UPD\categories">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Sequence Container\DF_order_itemsSTG">
     <LayoutInfo>
@@ -4820,6 +5825,264 @@ where [refTable].[category_id] = ?</property>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Sequence Container\DF_order_itemsSTG\order_itemsSTG">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Sequence Container\DFT_BrandsSTG">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="111,42"
+          Id="Package\Sequence Container\DFT_BrandsSTG\Brands"
+          TopLeft="270,144" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Sequence Container\DFT_BrandsSTG\brandsSTG"
+          TopLeft="259,331" />
+        <AnnotationLayout
+          Text="BikeStores"
+          ParentId="Package\Sequence Container\DFT_BrandsSTG"
+          FontInfo="{assembly:Null}"
+          Size="84,60"
+          Id="297aeb5f-a4ec-4a5f-bf3b-4fedc543f90d"
+          TopLeft="146,127" />
+        <AnnotationLayout
+          Text="BikestoreSTAGE"
+          ParentId="Package\Sequence Container\DFT_BrandsSTG"
+          FontInfo="{assembly:Null}"
+          Size="111,60"
+          Id="ca55cd90-5a37-4e93-a96a-d8f147927fd0"
+          TopLeft="124,319" />
+        <EdgeLayout
+          Id="Package\Sequence Container\DFT_BrandsSTG.Paths[OLE DB Source Output]"
+          TopLeft="324.75,186">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,145"
+              Start="0,0"
+              End="0,137.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,137.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\DFT_BrandsSTG\Brands">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\DFT_BrandsSTG\brandsSTG">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Sequence Container\DFT_Customers">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="129,42"
+          Id="Package\Sequence Container\DFT_Customers\Customers"
+          TopLeft="166,61" />
+        <NodeLayout
+          Size="148,42"
+          Id="Package\Sequence Container\DFT_Customers\CustomersSTG"
+          TopLeft="171,235" />
+        <AnnotationLayout
+          Text="Bikestores"
+          ParentId="Package\Sequence Container\DFT_Customers"
+          FontInfo="{assembly:Null}"
+          Size="83,60"
+          Id="b54566a9-b27a-4bb1-9e27-42d597e3691b"
+          TopLeft="90,78" />
+        <AnnotationLayout
+          Text="BikestoresSTAGE"
+          ParentId="Package\Sequence Container\DFT_Customers"
+          FontInfo="{assembly:Null}"
+          Size="116,60"
+          Id="dfc95571-6c51-4c51-9300-70923ce4cd0c"
+          TopLeft="64,240" />
+        <EdgeLayout
+          Id="Package\Sequence Container\DFT_Customers.Paths[OLE DB Source Output]"
+          TopLeft="230.5,103">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="14.5,132"
+              Start="0,0"
+              End="14.5,124.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,62" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,62"
+                    Point2="0,66"
+                    Point3="4,66" />
+                  <mssgle:LineSegment
+                    End="10.5,66" />
+                  <mssgle:CubicBezierSegment
+                    Point1="10.5,66"
+                    Point2="14.5,66"
+                    Point3="14.5,70" />
+                  <mssgle:LineSegment
+                    End="14.5,124.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\DFT_Customers\Customers">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\DFT_Customers\CustomersSTG">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Sequence Container\DFT_factorySTG">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="111,42"
+          Id="Package\Sequence Container\DFT_factorySTG\factory"
+          TopLeft="308,83" />
+        <NodeLayout
+          Size="131,42"
+          Id="Package\Sequence Container\DFT_factorySTG\factorySTG"
+          TopLeft="309,250" />
+        <AnnotationLayout
+          Text="bikesotres"
+          ParentId="Package\Sequence Container\DFT_factorySTG"
+          FontInfo="{assembly:Null}"
+          Size="83,60"
+          Id="241f5807-689f-45e5-8db0-435c5e6bd6e7"
+          TopLeft="206,81" />
+        <AnnotationLayout
+          Text="BikestoreSTAGE"
+          ParentId="Package\Sequence Container\DFT_factorySTG"
+          FontInfo="{assembly:Null}"
+          Size="111,60"
+          Id="138a4255-078a-4615-a9da-e3f1d8cbe90a"
+          TopLeft="198,256" />
+        <EdgeLayout
+          Id="Package\Sequence Container\DFT_factorySTG.Paths[OLE DB Source Output]"
+          TopLeft="363.5,125">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="11,125"
+              Start="0,0"
+              End="11,117.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,58.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,58.5"
+                    Point2="0,62.5"
+                    Point3="4,62.5" />
+                  <mssgle:LineSegment
+                    End="7,62.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="7,62.5"
+                    Point2="11,62.5"
+                    Point3="11,66.5" />
+                  <mssgle:LineSegment
+                    End="11,117.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\DFT_factorySTG\factory">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\DFT_factorySTG\factorySTG">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -4948,342 +6211,6 @@ where [refTable].[category_id] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
-    design-time-name="Package\Sequence Container\DFT_StaffSTG">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="106,42"
-          Id="Package\Sequence Container\DFT_StaffSTG\Staffs"
-          TopLeft="264,89" />
-        <NodeLayout
-          Size="125,42"
-          Id="Package\Sequence Container\DFT_StaffSTG\StaffsSTG"
-          TopLeft="259,230" />
-        <EdgeLayout
-          Id="Package\Sequence Container\DFT_StaffSTG.Paths[OLE DB Source Output]"
-          TopLeft="319.25,131">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,99"
-              Start="0,0"
-              End="0,91.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,91.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <AnnotationLayout
-          Text="BikeStore"
-          ParentId="Package\Sequence Container\DFT_StaffSTG"
-          FontInfo="{assembly:Null}"
-          Size="79,60"
-          Id="3a774f47-ad8d-4fd4-af5d-02b9a7deb443"
-          TopLeft="133,93" />
-        <AnnotationLayout
-          Text="BikeStoreSTAGE&#xD;&#xA;"
-          ParentId="Package\Sequence Container\DFT_StaffSTG"
-          FontInfo="{assembly:Null}"
-          Size="112,60"
-          Id="0b4c48c5-1564-4a36-a1d2-4a5506e06c0e"
-          TopLeft="116,214" />
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\DFT_StaffSTG\Staffs">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\DFT_StaffSTG\StaffsSTG">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Sequence Container\DFT_StoresSTG">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="109,42"
-          Id="Package\Sequence Container\DFT_StoresSTG\Sotres"
-          TopLeft="294,99" />
-        <NodeLayout
-          Size="128,42"
-          Id="Package\Sequence Container\DFT_StoresSTG\StoresSTG"
-          TopLeft="297,236" />
-        <EdgeLayout
-          Id="Package\Sequence Container\DFT_StoresSTG.Paths[OLE DB Source Output]"
-          TopLeft="348.5,141">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="12.5,95"
-              Start="0,0"
-              End="12.5,87.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,43.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,43.5"
-                    Point2="0,47.5"
-                    Point3="4,47.5" />
-                  <mssgle:LineSegment
-                    End="8.5,47.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="8.5,47.5"
-                    Point2="12.5,47.5"
-                    Point3="12.5,51.5" />
-                  <mssgle:LineSegment
-                    End="12.5,87.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <AnnotationLayout
-          Text="Bikestores"
-          ParentId="Package\Sequence Container\DFT_StoresSTG"
-          FontInfo="{assembly:Null}"
-          Size="83,60"
-          Id="50d24ea4-2ec0-4dea-b0d4-7d0170aa1f13"
-          TopLeft="184,121" />
-        <AnnotationLayout
-          Text="BikeStoreSATGE"
-          ParentId="Package\Sequence Container\DFT_StoresSTG"
-          FontInfo="{assembly:Null}"
-          Size="112,60"
-          Id="6185e3c5-58ca-495e-9c14-06045b423ee6"
-          TopLeft="182,238" />
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\DFT_StoresSTG\Sotres">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\DFT_StoresSTG\StoresSTG">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Sequence Container\DFT_BrandsSTG">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="111,42"
-          Id="Package\Sequence Container\DFT_BrandsSTG\Brands"
-          TopLeft="270,144" />
-        <NodeLayout
-          Size="130,42"
-          Id="Package\Sequence Container\DFT_BrandsSTG\brandsSTG"
-          TopLeft="259,331" />
-        <AnnotationLayout
-          Text="BikeStores"
-          ParentId="Package\Sequence Container\DFT_BrandsSTG"
-          FontInfo="{assembly:Null}"
-          Size="84,60"
-          Id="297aeb5f-a4ec-4a5f-bf3b-4fedc543f90d"
-          TopLeft="146,127" />
-        <AnnotationLayout
-          Text="BikestoreSTAGE"
-          ParentId="Package\Sequence Container\DFT_BrandsSTG"
-          FontInfo="{assembly:Null}"
-          Size="111,60"
-          Id="ca55cd90-5a37-4e93-a96a-d8f147927fd0"
-          TopLeft="124,319" />
-        <EdgeLayout
-          Id="Package\Sequence Container\DFT_BrandsSTG.Paths[OLE DB Source Output]"
-          TopLeft="324.75,186">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,145"
-              Start="0,0"
-              End="0,137.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,137.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\DFT_BrandsSTG\Brands">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\DFT_BrandsSTG\brandsSTG">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Sequence Container\DFT_factorySTG">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="111,42"
-          Id="Package\Sequence Container\DFT_factorySTG\factory"
-          TopLeft="308,83" />
-        <NodeLayout
-          Size="131,42"
-          Id="Package\Sequence Container\DFT_factorySTG\factorySTG"
-          TopLeft="309,250" />
-        <AnnotationLayout
-          Text="bikesotres"
-          ParentId="Package\Sequence Container\DFT_factorySTG"
-          FontInfo="{assembly:Null}"
-          Size="83,60"
-          Id="241f5807-689f-45e5-8db0-435c5e6bd6e7"
-          TopLeft="206,81" />
-        <AnnotationLayout
-          Text="BikestoreSTAGE"
-          ParentId="Package\Sequence Container\DFT_factorySTG"
-          FontInfo="{assembly:Null}"
-          Size="111,60"
-          Id="138a4255-078a-4615-a9da-e3f1d8cbe90a"
-          TopLeft="198,256" />
-        <EdgeLayout
-          Id="Package\Sequence Container\DFT_factorySTG.Paths[OLE DB Source Output]"
-          TopLeft="363.5,125">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="11,125"
-              Start="0,0"
-              End="11,117.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,58.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,58.5"
-                    Point2="0,62.5"
-                    Point3="4,62.5" />
-                  <mssgle:LineSegment
-                    End="7,62.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="7,62.5"
-                    Point2="11,62.5"
-                    Point3="11,66.5" />
-                  <mssgle:LineSegment
-                    End="11,117.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\DFT_factorySTG\factory">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\DFT_factorySTG\factorySTG">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
     design-time-name="Package\Sequence Container\DFT_Products">
     <LayoutInfo>
       <GraphLayout
@@ -5350,6 +6277,84 @@ where [refTable].[category_id] = ?</property>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Sequence Container\DFT_Products\ProductsSTG">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Sequence Container\DFT_StaffSTG">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="106,42"
+          Id="Package\Sequence Container\DFT_StaffSTG\Staffs"
+          TopLeft="264,89" />
+        <NodeLayout
+          Size="125,42"
+          Id="Package\Sequence Container\DFT_StaffSTG\StaffsSTG"
+          TopLeft="259,230" />
+        <EdgeLayout
+          Id="Package\Sequence Container\DFT_StaffSTG.Paths[OLE DB Source Output]"
+          TopLeft="319.25,131">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,99"
+              Start="0,0"
+              End="0,91.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,91.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="BikeStore"
+          ParentId="Package\Sequence Container\DFT_StaffSTG"
+          FontInfo="{assembly:Null}"
+          Size="79,60"
+          Id="3a774f47-ad8d-4fd4-af5d-02b9a7deb443"
+          TopLeft="133,93" />
+        <AnnotationLayout
+          Text="BikeStoreSTAGE&#xD;&#xA;"
+          ParentId="Package\Sequence Container\DFT_StaffSTG"
+          FontInfo="{assembly:Null}"
+          Size="112,60"
+          Id="0b4c48c5-1564-4a36-a1d2-4a5506e06c0e"
+          TopLeft="116,214" />
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\DFT_StaffSTG\Staffs">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\DFT_StaffSTG\StaffsSTG">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -5452,58 +6457,44 @@ where [refTable].[category_id] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
-    design-time-name="Package\Sequence Container\DFT_Customers">
+    design-time-name="Package\Sequence Container\DFT_StoresSTG">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="129,42"
-          Id="Package\Sequence Container\DFT_Customers\Customers"
-          TopLeft="166,61" />
+          Size="109,42"
+          Id="Package\Sequence Container\DFT_StoresSTG\Sotres"
+          TopLeft="294,99" />
         <NodeLayout
-          Size="148,42"
-          Id="Package\Sequence Container\DFT_Customers\CustomersSTG"
-          TopLeft="171,235" />
-        <AnnotationLayout
-          Text="Bikestores"
-          ParentId="Package\Sequence Container\DFT_Customers"
-          FontInfo="{assembly:Null}"
-          Size="83,60"
-          Id="b54566a9-b27a-4bb1-9e27-42d597e3691b"
-          TopLeft="90,78" />
-        <AnnotationLayout
-          Text="BikestoresSTAGE"
-          ParentId="Package\Sequence Container\DFT_Customers"
-          FontInfo="{assembly:Null}"
-          Size="116,60"
-          Id="dfc95571-6c51-4c51-9300-70923ce4cd0c"
-          TopLeft="64,240" />
+          Size="128,42"
+          Id="Package\Sequence Container\DFT_StoresSTG\StoresSTG"
+          TopLeft="297,236" />
         <EdgeLayout
-          Id="Package\Sequence Container\DFT_Customers.Paths[OLE DB Source Output]"
-          TopLeft="230.5,103">
+          Id="Package\Sequence Container\DFT_StoresSTG.Paths[OLE DB Source Output]"
+          TopLeft="348.5,141">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="14.5,132"
+              EndConnector="12.5,95"
               Start="0,0"
-              End="14.5,124.5">
+              End="12.5,87.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,62" />
+                    End="0,43.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,62"
-                    Point2="0,66"
-                    Point3="4,66" />
+                    Point1="0,43.5"
+                    Point2="0,47.5"
+                    Point3="4,47.5" />
                   <mssgle:LineSegment
-                    End="10.5,66" />
+                    End="8.5,47.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="10.5,66"
-                    Point2="14.5,66"
-                    Point3="14.5,70" />
+                    Point1="8.5,47.5"
+                    Point2="12.5,47.5"
+                    Point3="12.5,51.5" />
                   <mssgle:LineSegment
-                    End="14.5,124.5" />
+                    End="12.5,87.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5512,11 +6503,25 @@ where [refTable].[category_id] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <AnnotationLayout
+          Text="Bikestores"
+          ParentId="Package\Sequence Container\DFT_StoresSTG"
+          FontInfo="{assembly:Null}"
+          Size="83,60"
+          Id="50d24ea4-2ec0-4dea-b0d4-7d0170aa1f13"
+          TopLeft="184,121" />
+        <AnnotationLayout
+          Text="BikeStoreSATGE"
+          ParentId="Package\Sequence Container\DFT_StoresSTG"
+          FontInfo="{assembly:Null}"
+          Size="112,60"
+          Id="6185e3c5-58ca-495e-9c14-06045b423ee6"
+          TopLeft="182,238" />
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\DFT_Customers\Customers">
+    design-time-name="Package\Sequence Container\DFT_StoresSTG\Sotres">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -5529,7 +6534,7 @@ where [refTable].[category_id] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container\DFT_Customers\CustomersSTG">
+    design-time-name="Package\Sequence Container\DFT_StoresSTG\StoresSTG">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -5541,8 +6546,60 @@ where [refTable].[category_id] = ?</property>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Sequence Container\DFT_Metodo_Pago_Txt">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="137,42"
+          Id="Package\Sequence Container\DFT_Metodo_Pago_Txt\Metodopago"
+          TopLeft="246,53" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Sequence Container\DFT_Metodo_Pago_Txt\MetodopagoSTG"
+          TopLeft="239,187" />
+        <EdgeLayout
+          Id="Package\Sequence Container\DFT_Metodo_Pago_Txt.Paths[Flat File Source Output]"
+          TopLeft="315.75,95">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,92"
+              Start="0,0"
+              End="0,84.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,84.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="Origen TXT"
+          ParentId="Package\Sequence Container\DFT_Metodo_Pago_Txt"
+          FontInfo="{assembly:Null}"
+          Size="88,60"
+          Id="9d0c149f-d233-4e90-adbe-76ba2b34fb7c"
+          TopLeft="385,49" />
+        <AnnotationLayout
+          Text="B.D Bikerstore stage"
+          ParentId="Package\Sequence Container\DFT_Metodo_Pago_Txt"
+          FontInfo="{assembly:Null}"
+          Size="135,60"
+          Id="f6d700bf-fbc8-40fa-9ae2-f1c2145daf62"
+          TopLeft="388,182" />
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\CATEGORIAS\DFT_INS_UPD\categories">
+    design-time-name="Package\Sequence Container\DFT_Metodo_Pago_Txt\MetodopagoSTG">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -5551,29 +6608,6 @@ where [refTable].[category_id] = ?</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\CATEGORIAS\DFT_INS_UPD\Lookup">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[production].[categoriesSTG]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
