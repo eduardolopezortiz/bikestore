@@ -11,8 +11,8 @@
   DTS:LocaleID="2058"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="65"
-  DTS:VersionGUID="{655C44D5-565A-4419-AF2E-EAFB94E5D5F0}">
+  DTS:VersionBuild="71"
+  DTS:VersionGUID="{FDB6F7DF-7A5A-4A2B-B98A-2DFDFC4D180D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -59,7 +59,7 @@
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="0"
           DTS:ConnectRetryInterval="0"
-          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\SQL2019\origenes\CreditCardOrigen.xls;Extended Properties=&quot;Excel 8.0;HDR=YES&quot;;" />
+          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\SQL2019\origenes\CreditCardOrigen.xls;Extended Properties=&quot;EXCEL 8.0;HDR=YES&quot;;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -1295,550 +1295,6 @@ WHERE category_id = ?</property>
           SQLTask:Connection="{69305C1E-D9F9-4E3C-A096-974C1A577201}"
           SQLTask:SqlStatementSource="delete from production.brandsSTG&#xA;delete from production.categoriesSTG&#xA;delete from production.factorySTG&#xA;delete from production.productsSTG&#xA;delete from production.stocksSTG&#xA;delete from sales.customersSTG&#xA;delete from sales.order_itemsSTG&#xA;delete from sales.ordersSTG&#xA;delete from sales.storesSTG&#xA;delete from sales.staffsSTG&#xA;delete from CreditCardSTG&#xA;delete from MetodopagoSTG&#xA;delete from gastos_storeSTG&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\Orgen MySQL"
-      DTS:CreationName="STOCK:SEQUENCE"
-      DTS:Description="Sequence Container"
-      DTS:DTSID="{98F65E24-9561-4D9F-9799-97508D959166}"
-      DTS:ExecutableType="STOCK:SEQUENCE"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Orgen MySQL">
-      <DTS:Variables />
-      <DTS:Executables>
-        <DTS:Executable
-          DTS:refId="Package\Orgen MySQL\DFT_gastosStoreSTG"
-          DTS:CreationName="Microsoft.Pipeline"
-          DTS:Description="Data Flow Task"
-          DTS:DTSID="{40DE16A6-5183-45DB-B4EC-E2F5A8228437}"
-          DTS:ExecutableType="Microsoft.Pipeline"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="DFT_gastosStoreSTG"
-          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-          <DTS:Variables />
-          <DTS:ObjectData>
-            <pipeline
-              version="1">
-              <components>
-                <component
-                  refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store"
-                  componentClassID="Microsoft.SSISODBCSrc"
-                  contactInfo="ODBC Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
-                  description="ODBC Source"
-                  name="gastos_store"
-                  usesDispositions="true"
-                  version="1">
-                  <properties>
-                    <property
-                      dataType="System.String"
-                      description="The name of the table to be fetched."
-                      expressionType="Notify"
-                      name="TableName"></property>
-                    <property
-                      dataType="System.String"
-                      description="The SQL command to be executed."
-                      expressionType="Notify"
-                      name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from gastos_store</property>
-                    <property
-                      dataType="System.Int32"
-                      description="Specify the number of rows fetched per batch."
-                      expressionType="Notify"
-                      name="BatchSize">1000</property>
-                    <property
-                      dataType="System.Int32"
-                      description="Determines the chunk size allocation for LOB columns"
-                      expressionType="Notify"
-                      name="LobChunkSize">32768</property>
-                    <property
-                      dataType="System.Boolean"
-                      description="Determines how the component exposes CHAR columns. If False, CHAR columns are exposed as (multi-)byte strings (DT_STR), if True, CHAR columns are exposed as wide strings (DT_WSTR)"
-                      expressionType="Notify"
-                      name="ExposeCharColumnsAsUnicode">false</property>
-                    <property
-                      dataType="System.Int32"
-                      description="The number of seconds to wait for an SQL statement to execute before returning to the application."
-                      expressionType="Notify"
-                      name="StatementTimeout">0</property>
-                    <property
-                      dataType="System.Int32"
-                      description="The code page to use when code page information is unavailable from the data source."
-                      expressionType="Notify"
-                      name="DefaultCodePage">1252</property>
-                    <property
-                      dataType="System.Int32"
-                      description="The method used for fetching data."
-                      expressionType="Notify"
-                      name="FetchMethod">1</property>
-                    <property
-                      dataType="System.Int32"
-                      description="The ODBC C data type for binding numeric data."
-                      expressionType="Notify"
-                      name="BindNumericAs">0</property>
-                    <property
-                      dataType="System.Int32"
-                      description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
-                      expressionType="Notify"
-                      name="BindCharColumnsAs">0</property>
-                    <property
-                      dataType="System.Int32"
-                      description="The mode used to access the database."
-                      expressionType="Notify"
-                      name="AccessMode"
-                      typeConverter="AccessMode">1</property>
-                  </properties>
-                  <connections>
-                    <connection
-                      refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Connections[ODBCConnection]"
-                      connectionManagerID="Package.ConnectionManagers[ETL_MYSQL]"
-                      connectionManagerRefId="Package.ConnectionManagers[ETL_MYSQL]"
-                      description="The ODBC runtime connection used to access the database."
-                      name="ODBCConnection" />
-                  </connections>
-                  <outputs>
-                    <output
-                      refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output]"
-                      errorRowDisposition="FailComponent"
-                      name="ODBC Source Output"
-                      truncationRowDisposition="FailComponent">
-                      <outputColumns>
-                        <outputColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].Columns[gasto_id]"
-                          dataType="i4"
-                          externalMetadataColumnId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].ExternalColumns[gasto_id]"
-                          lineageId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].Columns[gasto_id]"
-                          name="gasto_id" />
-                        <outputColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].Columns[store_name]"
-                          codePage="1252"
-                          dataType="str"
-                          externalMetadataColumnId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].ExternalColumns[store_name]"
-                          length="50"
-                          lineageId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].Columns[store_name]"
-                          name="store_name" />
-                        <outputColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].Columns[anio]"
-                          dataType="i4"
-                          externalMetadataColumnId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].ExternalColumns[anio]"
-                          lineageId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].Columns[anio]"
-                          name="anio" />
-                        <outputColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].Columns[mes]"
-                          dataType="i4"
-                          externalMetadataColumnId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].ExternalColumns[mes]"
-                          lineageId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].Columns[mes]"
-                          name="mes" />
-                        <outputColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].Columns[renta]"
-                          dataType="i4"
-                          externalMetadataColumnId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].ExternalColumns[renta]"
-                          lineageId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].Columns[renta]"
-                          name="renta" />
-                        <outputColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].Columns[mtto]"
-                          dataType="i4"
-                          externalMetadataColumnId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].ExternalColumns[mtto]"
-                          lineageId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].Columns[mtto]"
-                          name="mtto" />
-                        <outputColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].Columns[nomina]"
-                          dataType="i4"
-                          externalMetadataColumnId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].ExternalColumns[nomina]"
-                          lineageId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].Columns[nomina]"
-                          name="nomina" />
-                        <outputColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].Columns[total]"
-                          dataType="i4"
-                          externalMetadataColumnId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].ExternalColumns[total]"
-                          lineageId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].Columns[total]"
-                          name="total" />
-                        <outputColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].Columns[staff_id]"
-                          dataType="i4"
-                          externalMetadataColumnId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].ExternalColumns[staff_id]"
-                          lineageId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].Columns[staff_id]"
-                          name="staff_id" />
-                        <outputColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].Columns[store_id]"
-                          dataType="i4"
-                          externalMetadataColumnId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].ExternalColumns[store_id]"
-                          lineageId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].Columns[store_id]"
-                          name="store_id" />
-                        <outputColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].Columns[fecha]"
-                          dataType="dbTimeStamp"
-                          externalMetadataColumnId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].ExternalColumns[fecha]"
-                          lineageId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].Columns[fecha]"
-                          name="fecha" />
-                      </outputColumns>
-                      <externalMetadataColumns
-                        isUsed="True">
-                        <externalMetadataColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].ExternalColumns[gasto_id]"
-                          dataType="i4"
-                          name="gasto_id" />
-                        <externalMetadataColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].ExternalColumns[store_name]"
-                          codePage="1252"
-                          dataType="str"
-                          length="50"
-                          name="store_name" />
-                        <externalMetadataColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].ExternalColumns[anio]"
-                          dataType="i4"
-                          name="anio" />
-                        <externalMetadataColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].ExternalColumns[mes]"
-                          dataType="i4"
-                          name="mes" />
-                        <externalMetadataColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].ExternalColumns[renta]"
-                          dataType="i4"
-                          name="renta" />
-                        <externalMetadataColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].ExternalColumns[mtto]"
-                          dataType="i4"
-                          name="mtto" />
-                        <externalMetadataColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].ExternalColumns[nomina]"
-                          dataType="i4"
-                          name="nomina" />
-                        <externalMetadataColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].ExternalColumns[total]"
-                          dataType="i4"
-                          name="total" />
-                        <externalMetadataColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].ExternalColumns[staff_id]"
-                          dataType="i4"
-                          name="staff_id" />
-                        <externalMetadataColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].ExternalColumns[store_id]"
-                          dataType="i4"
-                          name="store_id" />
-                        <externalMetadataColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].ExternalColumns[fecha]"
-                          dataType="dbTimeStamp"
-                          name="fecha" />
-                      </externalMetadataColumns>
-                    </output>
-                    <output
-                      refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Error Output]"
-                      isErrorOut="true"
-                      name="ODBC Source Error Output">
-                      <outputColumns>
-                        <outputColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Error Output].Columns[gasto_id]"
-                          dataType="i4"
-                          externalMetadataColumnId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].ExternalColumns[gasto_id]"
-                          lineageId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Error Output].Columns[gasto_id]"
-                          name="gasto_id" />
-                        <outputColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Error Output].Columns[store_name]"
-                          codePage="1252"
-                          dataType="str"
-                          externalMetadataColumnId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].ExternalColumns[store_name]"
-                          length="50"
-                          lineageId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Error Output].Columns[store_name]"
-                          name="store_name" />
-                        <outputColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Error Output].Columns[anio]"
-                          dataType="i4"
-                          externalMetadataColumnId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].ExternalColumns[anio]"
-                          lineageId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Error Output].Columns[anio]"
-                          name="anio" />
-                        <outputColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Error Output].Columns[mes]"
-                          dataType="i4"
-                          externalMetadataColumnId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].ExternalColumns[mes]"
-                          lineageId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Error Output].Columns[mes]"
-                          name="mes" />
-                        <outputColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Error Output].Columns[renta]"
-                          dataType="i4"
-                          externalMetadataColumnId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].ExternalColumns[renta]"
-                          lineageId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Error Output].Columns[renta]"
-                          name="renta" />
-                        <outputColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Error Output].Columns[mtto]"
-                          dataType="i4"
-                          externalMetadataColumnId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].ExternalColumns[mtto]"
-                          lineageId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Error Output].Columns[mtto]"
-                          name="mtto" />
-                        <outputColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Error Output].Columns[nomina]"
-                          dataType="i4"
-                          externalMetadataColumnId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].ExternalColumns[nomina]"
-                          lineageId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Error Output].Columns[nomina]"
-                          name="nomina" />
-                        <outputColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Error Output].Columns[total]"
-                          dataType="i4"
-                          externalMetadataColumnId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].ExternalColumns[total]"
-                          lineageId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Error Output].Columns[total]"
-                          name="total" />
-                        <outputColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Error Output].Columns[staff_id]"
-                          dataType="i4"
-                          externalMetadataColumnId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].ExternalColumns[staff_id]"
-                          lineageId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Error Output].Columns[staff_id]"
-                          name="staff_id" />
-                        <outputColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Error Output].Columns[store_id]"
-                          dataType="i4"
-                          externalMetadataColumnId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].ExternalColumns[store_id]"
-                          lineageId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Error Output].Columns[store_id]"
-                          name="store_id" />
-                        <outputColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Error Output].Columns[fecha]"
-                          dataType="dbTimeStamp"
-                          externalMetadataColumnId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].ExternalColumns[fecha]"
-                          lineageId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Error Output].Columns[fecha]"
-                          name="fecha" />
-                        <outputColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
-                          dataType="i4"
-                          lineageId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
-                          name="ErrorCode"
-                          specialFlags="1" />
-                        <outputColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
-                          dataType="i4"
-                          lineageId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
-                          name="ErrorColumn"
-                          specialFlags="2" />
-                      </outputColumns>
-                      <externalMetadataColumns />
-                    </output>
-                  </outputs>
-                </component>
-                <component
-                  refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_storeSTG"
-                  componentClassID="Microsoft.OLEDBDestination"
-                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
-                  description="OLE DB Destination"
-                  name="gastos_storeSTG"
-                  usesDispositions="true"
-                  version="4">
-                  <properties>
-                    <property
-                      dataType="System.Int32"
-                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                      name="CommandTimeout">0</property>
-                    <property
-                      dataType="System.String"
-                      description="Specifies the name of the database object used to open a rowset."
-                      name="OpenRowset">[dbo].[gastos_storeSTG]</property>
-                    <property
-                      dataType="System.String"
-                      description="Specifies the variable that contains the name of the database object used to open a rowset."
-                      name="OpenRowsetVariable"></property>
-                    <property
-                      dataType="System.String"
-                      description="The SQL command to be executed."
-                      name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
-                    <property
-                      dataType="System.Int32"
-                      description="Specifies the column code page to use when code page information is unavailable from the data source."
-                      name="DefaultCodePage">1252</property>
-                    <property
-                      dataType="System.Boolean"
-                      description="Forces the use of the DefaultCodePage property value when describing character data."
-                      name="AlwaysUseDefaultCodePage">false</property>
-                    <property
-                      dataType="System.Int32"
-                      description="Specifies the mode used to access the database."
-                      name="AccessMode"
-                      typeConverter="AccessMode">3</property>
-                    <property
-                      dataType="System.Boolean"
-                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
-                      name="FastLoadKeepIdentity">false</property>
-                    <property
-                      dataType="System.Boolean"
-                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
-                      name="FastLoadKeepNulls">false</property>
-                    <property
-                      dataType="System.String"
-                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
-                    <property
-                      dataType="System.Int32"
-                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
-                      name="FastLoadMaxInsertCommitSize">2147483647</property>
-                  </properties>
-                  <connections>
-                    <connection
-                      refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_storeSTG.Connections[OleDbConnection]"
-                      connectionManagerID="Package.ConnectionManagers[DESKTOP-DE6LJ3M\SQLSERVER.bikestoreSTAGE]"
-                      connectionManagerRefId="Package.ConnectionManagers[DESKTOP-DE6LJ3M\SQLSERVER.bikestoreSTAGE]"
-                      description="The OLE DB runtime connection used to access the database."
-                      name="OleDbConnection" />
-                  </connections>
-                  <inputs>
-                    <input
-                      refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_storeSTG.Inputs[OLE DB Destination Input]"
-                      errorOrTruncationOperation="Insert"
-                      errorRowDisposition="FailComponent"
-                      hasSideEffects="true"
-                      name="OLE DB Destination Input">
-                      <inputColumns>
-                        <inputColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_storeSTG.Inputs[OLE DB Destination Input].Columns[gasto_id]"
-                          cachedDataType="i4"
-                          cachedName="gasto_id"
-                          externalMetadataColumnId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_storeSTG.Inputs[OLE DB Destination Input].ExternalColumns[gasto_id]"
-                          lineageId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].Columns[gasto_id]" />
-                        <inputColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_storeSTG.Inputs[OLE DB Destination Input].Columns[store_name]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="50"
-                          cachedName="store_name"
-                          externalMetadataColumnId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_storeSTG.Inputs[OLE DB Destination Input].ExternalColumns[store_name]"
-                          lineageId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].Columns[store_name]" />
-                        <inputColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_storeSTG.Inputs[OLE DB Destination Input].Columns[anio]"
-                          cachedDataType="i4"
-                          cachedName="anio"
-                          externalMetadataColumnId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_storeSTG.Inputs[OLE DB Destination Input].ExternalColumns[anio]"
-                          lineageId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].Columns[anio]" />
-                        <inputColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_storeSTG.Inputs[OLE DB Destination Input].Columns[mes]"
-                          cachedDataType="i4"
-                          cachedName="mes"
-                          externalMetadataColumnId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_storeSTG.Inputs[OLE DB Destination Input].ExternalColumns[mes]"
-                          lineageId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].Columns[mes]" />
-                        <inputColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_storeSTG.Inputs[OLE DB Destination Input].Columns[renta]"
-                          cachedDataType="i4"
-                          cachedName="renta"
-                          externalMetadataColumnId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_storeSTG.Inputs[OLE DB Destination Input].ExternalColumns[renta]"
-                          lineageId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].Columns[renta]" />
-                        <inputColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_storeSTG.Inputs[OLE DB Destination Input].Columns[mtto]"
-                          cachedDataType="i4"
-                          cachedName="mtto"
-                          externalMetadataColumnId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_storeSTG.Inputs[OLE DB Destination Input].ExternalColumns[mtto]"
-                          lineageId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].Columns[mtto]" />
-                        <inputColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_storeSTG.Inputs[OLE DB Destination Input].Columns[nomina]"
-                          cachedDataType="i4"
-                          cachedName="nomina"
-                          externalMetadataColumnId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_storeSTG.Inputs[OLE DB Destination Input].ExternalColumns[nomina]"
-                          lineageId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].Columns[nomina]" />
-                        <inputColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_storeSTG.Inputs[OLE DB Destination Input].Columns[total]"
-                          cachedDataType="i4"
-                          cachedName="total"
-                          externalMetadataColumnId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_storeSTG.Inputs[OLE DB Destination Input].ExternalColumns[total]"
-                          lineageId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].Columns[total]" />
-                        <inputColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_storeSTG.Inputs[OLE DB Destination Input].Columns[staff_id]"
-                          cachedDataType="i4"
-                          cachedName="staff_id"
-                          externalMetadataColumnId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_storeSTG.Inputs[OLE DB Destination Input].ExternalColumns[staff_id]"
-                          lineageId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].Columns[staff_id]" />
-                        <inputColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_storeSTG.Inputs[OLE DB Destination Input].Columns[store_id]"
-                          cachedDataType="i4"
-                          cachedName="store_id"
-                          externalMetadataColumnId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_storeSTG.Inputs[OLE DB Destination Input].ExternalColumns[store_id]"
-                          lineageId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].Columns[store_id]" />
-                        <inputColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_storeSTG.Inputs[OLE DB Destination Input].Columns[fecha]"
-                          cachedDataType="dbTimeStamp"
-                          cachedName="fecha"
-                          externalMetadataColumnId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_storeSTG.Inputs[OLE DB Destination Input].ExternalColumns[fecha]"
-                          lineageId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output].Columns[fecha]" />
-                      </inputColumns>
-                      <externalMetadataColumns
-                        isUsed="True">
-                        <externalMetadataColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_storeSTG.Inputs[OLE DB Destination Input].ExternalColumns[gasto_id]"
-                          dataType="i4"
-                          name="gasto_id" />
-                        <externalMetadataColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_storeSTG.Inputs[OLE DB Destination Input].ExternalColumns[store_id]"
-                          dataType="i4"
-                          name="store_id" />
-                        <externalMetadataColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_storeSTG.Inputs[OLE DB Destination Input].ExternalColumns[store_name]"
-                          codePage="1252"
-                          dataType="text"
-                          name="store_name" />
-                        <externalMetadataColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_storeSTG.Inputs[OLE DB Destination Input].ExternalColumns[mes]"
-                          dataType="i4"
-                          name="mes" />
-                        <externalMetadataColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_storeSTG.Inputs[OLE DB Destination Input].ExternalColumns[renta]"
-                          dataType="i4"
-                          name="renta" />
-                        <externalMetadataColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_storeSTG.Inputs[OLE DB Destination Input].ExternalColumns[mtto]"
-                          dataType="i4"
-                          name="mtto" />
-                        <externalMetadataColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_storeSTG.Inputs[OLE DB Destination Input].ExternalColumns[nomina]"
-                          dataType="i4"
-                          name="nomina" />
-                        <externalMetadataColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_storeSTG.Inputs[OLE DB Destination Input].ExternalColumns[total]"
-                          dataType="i4"
-                          name="total" />
-                        <externalMetadataColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_storeSTG.Inputs[OLE DB Destination Input].ExternalColumns[anio]"
-                          dataType="i4"
-                          name="anio" />
-                        <externalMetadataColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_storeSTG.Inputs[OLE DB Destination Input].ExternalColumns[staff_id]"
-                          dataType="i4"
-                          name="staff_id" />
-                        <externalMetadataColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_storeSTG.Inputs[OLE DB Destination Input].ExternalColumns[fecha]"
-                          dataType="dbTimeStamp"
-                          name="fecha" />
-                      </externalMetadataColumns>
-                    </input>
-                  </inputs>
-                  <outputs>
-                    <output
-                      refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_storeSTG.Outputs[OLE DB Destination Error Output]"
-                      exclusionGroup="1"
-                      isErrorOut="true"
-                      name="OLE DB Destination Error Output"
-                      synchronousInputId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_storeSTG.Inputs[OLE DB Destination Input]">
-                      <outputColumns>
-                        <outputColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_storeSTG.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                          dataType="i4"
-                          lineageId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_storeSTG.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                          name="ErrorCode"
-                          specialFlags="1" />
-                        <outputColumn
-                          refId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_storeSTG.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                          dataType="i4"
-                          lineageId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_storeSTG.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                          name="ErrorColumn"
-                          specialFlags="2" />
-                      </outputColumns>
-                      <externalMetadataColumns />
-                    </output>
-                  </outputs>
-                </component>
-              </components>
-              <paths>
-                <path
-                  refId="Package\Orgen MySQL\DFT_gastosStoreSTG.Paths[ODBC Source Output]"
-                  endId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_storeSTG.Inputs[OLE DB Destination Input]"
-                  name="ODBC Source Output"
-                  startId="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store.Outputs[ODBC Source Output]" />
-              </paths>
-            </pipeline>
-          </DTS:ObjectData>
-        </DTS:Executable>
-      </DTS:Executables>
     </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\Origen TXT"
@@ -6680,6 +6136,550 @@ WHERE category_id = ?</property>
             </pipeline>
           </DTS:ObjectData>
         </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\TABLAS SQL\Sequence Container"
+          DTS:CreationName="STOCK:SEQUENCE"
+          DTS:Description="Sequence Container"
+          DTS:DTSID="{7583CF67-66AE-446D-B2B7-7C500B468CBC}"
+          DTS:ExecutableType="STOCK:SEQUENCE"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Sequence Container">
+          <DTS:Variables />
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG"
+              DTS:CreationName="Microsoft.Pipeline"
+              DTS:Description="Data Flow Task"
+              DTS:DTSID="{40DE16A6-5183-45DB-B4EC-E2F5A8228437}"
+              DTS:ExecutableType="Microsoft.Pipeline"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="DFT_gastosStoreSTG"
+              DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <pipeline
+                  version="1">
+                  <components>
+                    <component
+                      refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source"
+                      componentClassID="Microsoft.SSISODBCSrc"
+                      contactInfo="ODBC Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                      description="ODBC Source"
+                      name="ODBC Source"
+                      usesDispositions="true"
+                      version="1">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="The name of the table to be fetched."
+                          expressionType="Notify"
+                          name="TableName"></property>
+                        <property
+                          dataType="System.String"
+                          description="The SQL command to be executed."
+                          expressionType="Notify"
+                          name="SqlCommand"
+                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from gastos_store</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specify the number of rows fetched per batch."
+                          expressionType="Notify"
+                          name="BatchSize">1000</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Determines the chunk size allocation for LOB columns"
+                          expressionType="Notify"
+                          name="LobChunkSize">32768</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Determines how the component exposes CHAR columns. If False, CHAR columns are exposed as (multi-)byte strings (DT_STR), if True, CHAR columns are exposed as wide strings (DT_WSTR)"
+                          expressionType="Notify"
+                          name="ExposeCharColumnsAsUnicode">false</property>
+                        <property
+                          dataType="System.Int32"
+                          description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                          expressionType="Notify"
+                          name="StatementTimeout">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="The code page to use when code page information is unavailable from the data source."
+                          expressionType="Notify"
+                          name="DefaultCodePage">1252</property>
+                        <property
+                          dataType="System.Int32"
+                          description="The method used for fetching data."
+                          expressionType="Notify"
+                          name="FetchMethod">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="The ODBC C data type for binding numeric data."
+                          expressionType="Notify"
+                          name="BindNumericAs">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                          expressionType="Notify"
+                          name="BindCharColumnsAs">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="The mode used to access the database."
+                          expressionType="Notify"
+                          name="AccessMode"
+                          typeConverter="AccessMode">1</property>
+                      </properties>
+                      <connections>
+                        <connection
+                          refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Connections[ODBCConnection]"
+                          connectionManagerID="Package.ConnectionManagers[ETL_MYSQL]"
+                          connectionManagerRefId="Package.ConnectionManagers[ETL_MYSQL]"
+                          description="The ODBC runtime connection used to access the database."
+                          name="ODBCConnection" />
+                      </connections>
+                      <outputs>
+                        <output
+                          refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output]"
+                          errorRowDisposition="FailComponent"
+                          name="ODBC Source Output"
+                          truncationRowDisposition="FailComponent">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].Columns[gasto_id]"
+                              dataType="i4"
+                              externalMetadataColumnId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[gasto_id]"
+                              lineageId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].Columns[gasto_id]"
+                              name="gasto_id" />
+                            <outputColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].Columns[store_name]"
+                              codePage="1252"
+                              dataType="str"
+                              externalMetadataColumnId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[store_name]"
+                              length="50"
+                              lineageId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].Columns[store_name]"
+                              name="store_name" />
+                            <outputColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].Columns[anio]"
+                              dataType="i4"
+                              externalMetadataColumnId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[anio]"
+                              lineageId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].Columns[anio]"
+                              name="anio" />
+                            <outputColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].Columns[mes]"
+                              dataType="i4"
+                              externalMetadataColumnId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[mes]"
+                              lineageId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].Columns[mes]"
+                              name="mes" />
+                            <outputColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].Columns[renta]"
+                              dataType="i4"
+                              externalMetadataColumnId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[renta]"
+                              lineageId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].Columns[renta]"
+                              name="renta" />
+                            <outputColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].Columns[mtto]"
+                              dataType="i4"
+                              externalMetadataColumnId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[mtto]"
+                              lineageId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].Columns[mtto]"
+                              name="mtto" />
+                            <outputColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].Columns[nomina]"
+                              dataType="i4"
+                              externalMetadataColumnId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[nomina]"
+                              lineageId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].Columns[nomina]"
+                              name="nomina" />
+                            <outputColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].Columns[total]"
+                              dataType="i4"
+                              externalMetadataColumnId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[total]"
+                              lineageId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].Columns[total]"
+                              name="total" />
+                            <outputColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].Columns[staff_id]"
+                              dataType="i4"
+                              externalMetadataColumnId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[staff_id]"
+                              lineageId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].Columns[staff_id]"
+                              name="staff_id" />
+                            <outputColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].Columns[store_id]"
+                              dataType="i4"
+                              externalMetadataColumnId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[store_id]"
+                              lineageId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].Columns[store_id]"
+                              name="store_id" />
+                            <outputColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].Columns[fecha]"
+                              dataType="dbTimeStamp"
+                              externalMetadataColumnId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[fecha]"
+                              lineageId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].Columns[fecha]"
+                              name="fecha" />
+                          </outputColumns>
+                          <externalMetadataColumns
+                            isUsed="True">
+                            <externalMetadataColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[gasto_id]"
+                              dataType="i4"
+                              name="gasto_id" />
+                            <externalMetadataColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[store_name]"
+                              codePage="1252"
+                              dataType="str"
+                              length="50"
+                              name="store_name" />
+                            <externalMetadataColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[anio]"
+                              dataType="i4"
+                              name="anio" />
+                            <externalMetadataColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[mes]"
+                              dataType="i4"
+                              name="mes" />
+                            <externalMetadataColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[renta]"
+                              dataType="i4"
+                              name="renta" />
+                            <externalMetadataColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[mtto]"
+                              dataType="i4"
+                              name="mtto" />
+                            <externalMetadataColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[nomina]"
+                              dataType="i4"
+                              name="nomina" />
+                            <externalMetadataColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[total]"
+                              dataType="i4"
+                              name="total" />
+                            <externalMetadataColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[staff_id]"
+                              dataType="i4"
+                              name="staff_id" />
+                            <externalMetadataColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[store_id]"
+                              dataType="i4"
+                              name="store_id" />
+                            <externalMetadataColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[fecha]"
+                              dataType="dbTimeStamp"
+                              name="fecha" />
+                          </externalMetadataColumns>
+                        </output>
+                        <output
+                          refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Error Output]"
+                          isErrorOut="true"
+                          name="ODBC Source Error Output">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Error Output].Columns[gasto_id]"
+                              dataType="i4"
+                              externalMetadataColumnId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[gasto_id]"
+                              lineageId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Error Output].Columns[gasto_id]"
+                              name="gasto_id" />
+                            <outputColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Error Output].Columns[store_name]"
+                              codePage="1252"
+                              dataType="str"
+                              externalMetadataColumnId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[store_name]"
+                              length="50"
+                              lineageId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Error Output].Columns[store_name]"
+                              name="store_name" />
+                            <outputColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Error Output].Columns[anio]"
+                              dataType="i4"
+                              externalMetadataColumnId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[anio]"
+                              lineageId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Error Output].Columns[anio]"
+                              name="anio" />
+                            <outputColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Error Output].Columns[mes]"
+                              dataType="i4"
+                              externalMetadataColumnId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[mes]"
+                              lineageId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Error Output].Columns[mes]"
+                              name="mes" />
+                            <outputColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Error Output].Columns[renta]"
+                              dataType="i4"
+                              externalMetadataColumnId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[renta]"
+                              lineageId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Error Output].Columns[renta]"
+                              name="renta" />
+                            <outputColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Error Output].Columns[mtto]"
+                              dataType="i4"
+                              externalMetadataColumnId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[mtto]"
+                              lineageId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Error Output].Columns[mtto]"
+                              name="mtto" />
+                            <outputColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Error Output].Columns[nomina]"
+                              dataType="i4"
+                              externalMetadataColumnId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[nomina]"
+                              lineageId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Error Output].Columns[nomina]"
+                              name="nomina" />
+                            <outputColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Error Output].Columns[total]"
+                              dataType="i4"
+                              externalMetadataColumnId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[total]"
+                              lineageId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Error Output].Columns[total]"
+                              name="total" />
+                            <outputColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Error Output].Columns[staff_id]"
+                              dataType="i4"
+                              externalMetadataColumnId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[staff_id]"
+                              lineageId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Error Output].Columns[staff_id]"
+                              name="staff_id" />
+                            <outputColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Error Output].Columns[store_id]"
+                              dataType="i4"
+                              externalMetadataColumnId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[store_id]"
+                              lineageId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Error Output].Columns[store_id]"
+                              name="store_id" />
+                            <outputColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Error Output].Columns[fecha]"
+                              dataType="dbTimeStamp"
+                              externalMetadataColumnId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[fecha]"
+                              lineageId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Error Output].Columns[fecha]"
+                              name="fecha" />
+                            <outputColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                              dataType="i4"
+                              lineageId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                              name="ErrorCode"
+                              specialFlags="1" />
+                            <outputColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                              dataType="i4"
+                              lineageId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                              name="ErrorColumn"
+                              specialFlags="2" />
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
+                    <component
+                      refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\OLE DB Destination"
+                      componentClassID="Microsoft.OLEDBDestination"
+                      contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                      description="OLE DB Destination"
+                      name="OLE DB Destination"
+                      usesDispositions="true"
+                      version="4">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                          name="CommandTimeout">0</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the name of the database object used to open a rowset."
+                          name="OpenRowset">[dbo].[gastos_storeSTG]</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the variable that contains the name of the database object used to open a rowset."
+                          name="OpenRowsetVariable"></property>
+                        <property
+                          dataType="System.String"
+                          description="The SQL command to be executed."
+                          name="SqlCommand"
+                          UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the column code page to use when code page information is unavailable from the data source."
+                          name="DefaultCodePage">1252</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Forces the use of the DefaultCodePage property value when describing character data."
+                          name="AlwaysUseDefaultCodePage">false</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the mode used to access the database."
+                          name="AccessMode"
+                          typeConverter="AccessMode">3</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                          name="FastLoadKeepIdentity">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                          name="FastLoadKeepNulls">false</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                          name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                          name="FastLoadMaxInsertCommitSize">2147483647</property>
+                      </properties>
+                      <connections>
+                        <connection
+                          refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\OLE DB Destination.Connections[OleDbConnection]"
+                          connectionManagerID="Package.ConnectionManagers[DESKTOP-DE6LJ3M\SQLSERVER.bikestoreSTAGE]"
+                          connectionManagerRefId="Package.ConnectionManagers[DESKTOP-DE6LJ3M\SQLSERVER.bikestoreSTAGE]"
+                          description="The OLE DB runtime connection used to access the database."
+                          name="OleDbConnection" />
+                      </connections>
+                      <inputs>
+                        <input
+                          refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                          errorOrTruncationOperation="Insert"
+                          errorRowDisposition="FailComponent"
+                          hasSideEffects="true"
+                          name="OLE DB Destination Input">
+                          <inputColumns>
+                            <inputColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[gasto_id]"
+                              cachedDataType="i4"
+                              cachedName="gasto_id"
+                              externalMetadataColumnId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[gasto_id]"
+                              lineageId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].Columns[gasto_id]" />
+                            <inputColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[store_name]"
+                              cachedCodepage="1252"
+                              cachedDataType="str"
+                              cachedLength="50"
+                              cachedName="store_name"
+                              externalMetadataColumnId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[store_name]"
+                              lineageId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].Columns[store_name]" />
+                            <inputColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[anio]"
+                              cachedDataType="i4"
+                              cachedName="anio"
+                              externalMetadataColumnId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[anio]"
+                              lineageId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].Columns[anio]" />
+                            <inputColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[mes]"
+                              cachedDataType="i4"
+                              cachedName="mes"
+                              externalMetadataColumnId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[mes]"
+                              lineageId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].Columns[mes]" />
+                            <inputColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[renta]"
+                              cachedDataType="i4"
+                              cachedName="renta"
+                              externalMetadataColumnId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[renta]"
+                              lineageId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].Columns[renta]" />
+                            <inputColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[mtto]"
+                              cachedDataType="i4"
+                              cachedName="mtto"
+                              externalMetadataColumnId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[mtto]"
+                              lineageId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].Columns[mtto]" />
+                            <inputColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[nomina]"
+                              cachedDataType="i4"
+                              cachedName="nomina"
+                              externalMetadataColumnId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[nomina]"
+                              lineageId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].Columns[nomina]" />
+                            <inputColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[total]"
+                              cachedDataType="i4"
+                              cachedName="total"
+                              externalMetadataColumnId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[total]"
+                              lineageId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].Columns[total]" />
+                            <inputColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[staff_id]"
+                              cachedDataType="i4"
+                              cachedName="staff_id"
+                              externalMetadataColumnId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[staff_id]"
+                              lineageId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].Columns[staff_id]" />
+                            <inputColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[store_id]"
+                              cachedDataType="i4"
+                              cachedName="store_id"
+                              externalMetadataColumnId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[store_id]"
+                              lineageId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].Columns[store_id]" />
+                            <inputColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[fecha]"
+                              cachedDataType="dbTimeStamp"
+                              cachedName="fecha"
+                              externalMetadataColumnId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[fecha]"
+                              lineageId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output].Columns[fecha]" />
+                          </inputColumns>
+                          <externalMetadataColumns
+                            isUsed="True">
+                            <externalMetadataColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[gasto_id]"
+                              dataType="i4"
+                              name="gasto_id" />
+                            <externalMetadataColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[store_id]"
+                              dataType="i4"
+                              name="store_id" />
+                            <externalMetadataColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[store_name]"
+                              codePage="1252"
+                              dataType="text"
+                              name="store_name" />
+                            <externalMetadataColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[mes]"
+                              dataType="i4"
+                              name="mes" />
+                            <externalMetadataColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[renta]"
+                              dataType="i4"
+                              name="renta" />
+                            <externalMetadataColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[mtto]"
+                              dataType="i4"
+                              name="mtto" />
+                            <externalMetadataColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[nomina]"
+                              dataType="i4"
+                              name="nomina" />
+                            <externalMetadataColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[total]"
+                              dataType="i4"
+                              name="total" />
+                            <externalMetadataColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[anio]"
+                              dataType="i4"
+                              name="anio" />
+                            <externalMetadataColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[staff_id]"
+                              dataType="i4"
+                              name="staff_id" />
+                            <externalMetadataColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[fecha]"
+                              dataType="dbTimeStamp"
+                              name="fecha" />
+                          </externalMetadataColumns>
+                        </input>
+                      </inputs>
+                      <outputs>
+                        <output
+                          refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                          exclusionGroup="1"
+                          isErrorOut="true"
+                          name="OLE DB Destination Error Output"
+                          synchronousInputId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                          <outputColumns>
+                            <outputColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                              dataType="i4"
+                              lineageId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                              name="ErrorCode"
+                              specialFlags="1" />
+                            <outputColumn
+                              refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                              dataType="i4"
+                              lineageId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                              name="ErrorColumn"
+                              specialFlags="2" />
+                          </outputColumns>
+                          <externalMetadataColumns />
+                        </output>
+                      </outputs>
+                    </component>
+                  </components>
+                  <paths>
+                    <path
+                      refId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG.Paths[ODBC Source Output]"
+                      endId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      name="ODBC Source Output"
+                      startId="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source.Outputs[ODBC Source Output]" />
+                  </paths>
+                </pipeline>
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+        </DTS:Executable>
       </DTS:Executables>
       <DTS:PrecedenceConstraints>
         <DTS:PrecedenceConstraint
@@ -6733,18 +6733,26 @@ WHERE category_id = ?</property>
         <DTS:PrecedenceConstraint
           DTS:refId="Package\TABLAS SQL.PrecedenceConstraints[Constraint 6]"
           DTS:CreationName=""
-          DTS:DTSID="{2DA3EB28-315B-481A-B987-B7808E84B553}"
+          DTS:DTSID="{47A93F4B-3AF0-490A-B2E8-A918CC52210A}"
           DTS:From="Package\TABLAS SQL\DFT_StaffSTG"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 6"
-          DTS:To="Package\TABLAS SQL\DFT_ordersSTG" />
+          DTS:To="Package\TABLAS SQL\Sequence Container" />
         <DTS:PrecedenceConstraint
           DTS:refId="Package\TABLAS SQL.PrecedenceConstraints[Constraint 7]"
           DTS:CreationName=""
-          DTS:DTSID="{80848F5F-1077-4AAE-A16B-D686A5F5CF89}"
-          DTS:From="Package\TABLAS SQL\DFT_ordersSTG"
+          DTS:DTSID="{1707102C-48E3-44A8-B1B2-A0ABF0AB17FA}"
+          DTS:From="Package\TABLAS SQL\Sequence Container"
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 7"
+          DTS:To="Package\TABLAS SQL\DFT_ordersSTG" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\TABLAS SQL.PrecedenceConstraints[Constraint 8]"
+          DTS:CreationName=""
+          DTS:DTSID="{6AF77A27-0DB6-496E-BB56-09370F482619}"
+          DTS:From="Package\TABLAS SQL\DFT_ordersSTG"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 8"
           DTS:To="Package\TABLAS SQL\DF_order_itemsSTG" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
@@ -6769,7 +6777,7 @@ WHERE category_id = ?</property>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
-      DTS:DTSID="{52A93390-E568-436F-AAE2-EA1296EB28FA}"
+      DTS:DTSID="{06949B8C-F888-4BCD-8B04-922710D7EC5F}"
       DTS:From="Package\TABLAS SQL"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 2"
@@ -6777,18 +6785,10 @@ WHERE category_id = ?</property>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
       DTS:CreationName=""
-      DTS:DTSID="{AFAE6B48-3EA8-4FC6-8516-0F8D44AA0C8B}"
+      DTS:DTSID="{3073904F-D5AB-4746-86CD-3D3EB0A383F3}"
       DTS:From="Package\Origen TXT"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 3"
-      DTS:To="Package\Orgen MySQL" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
-      DTS:CreationName=""
-      DTS:DTSID="{93A28939-D00E-49C0-9981-6566F35A035D}"
-      DTS:From="Package\Orgen MySQL"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 4"
       DTS:To="Package\Origen XLS" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
@@ -6845,9 +6845,31 @@ WHERE category_id = ?</property>
           Id="Package\Execute SQL Task"
           TopLeft="99.75,173.75" />
         <NodeLayout
+          Size="189,42"
+          Id="Package\Origen TXT\DFT_Metodo_Pago_Txt"
+          TopLeft="15.0000000000005,3.91666666666666" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="242,102"
+          Size="242,145"
+          Id="Package\Origen TXT"
+          TopLeft="1250.08333333333,241.666666666667" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Origen XLS\DFT_CreditcardSTG"
+          TopLeft="16.75,23.75" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="205,121"
+          Size="205,164"
+          Id="Package\Origen XLS"
+          TopLeft="1315.32142857143,481.25" />
+        <NodeLayout
           Size="173,42"
           Id="Package\TABLAS SQL\DF_order_itemsSTG"
-          TopLeft="225.400793650793,15.1230158730158" />
+          TopLeft="293.582611832611,5.5" />
         <NodeLayout
           Size="155,42"
           Id="Package\TABLAS SQL\DFT_BrandsSTG"
@@ -6863,23 +6885,23 @@ WHERE category_id = ?</property>
         <NodeLayout
           Size="153,42"
           Id="Package\TABLAS SQL\DFT_ordersSTG"
-          TopLeft="238.654768290973,159.019841269841" />
+          TopLeft="295.182546068751,101.65873015873" />
+        <NodeLayout
+          Size="144,42"
+          Id="Package\TABLAS SQL\DFT_Products"
+          TopLeft="33.1666666666667,516.559523809524" />
         <NodeLayout
           Size="145,42"
           Id="Package\TABLAS SQL\DFT_StaffSTG"
-          TopLeft="232.626984126985,258.436507936508" />
+          TopLeft="274.710317460318,426.769841269841" />
         <NodeLayout
           Size="133,42"
           Id="Package\TABLAS SQL\DFT_stocks"
-          TopLeft="258.993506493506,364.068181818182" />
+          TopLeft="281.493506493506,514.901515151515" />
         <NodeLayout
           Size="153,42"
           Id="Package\TABLAS SQL\DFT_StoresSTG"
           TopLeft="34.9166666666664,164.84595959596" />
-        <NodeLayout
-          Size="144,42"
-          Id="Package\TABLAS SQL\DFT_Products"
-          TopLeft="34,369.892857142857" />
         <EdgeLayout
           Id="Package\TABLAS SQL.PrecedenceConstraints[Constraint]"
           TopLeft="102.25,52.25">
@@ -6972,18 +6994,30 @@ WHERE category_id = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\TABLAS SQL.PrecedenceConstraints[Constraint 3]"
-          TopLeft="104.385101010101,305.515151515151">
+          TopLeft="102.770202020202,305.515151515151">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,64.3777056277057"
+              EndConnector="-20.2702020202021,211.044372294373"
               Start="0,0"
-              End="0,56.8777056277057">
+              End="-20.2702020202021,203.544372294373">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,56.8777056277057" />
+                    End="0,121.235122020836" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,121.235122020836"
+                    Point2="0,125.235122020836"
+                    Point3="-4,125.235122020836" />
+                  <mssgle:LineSegment
+                    End="-16.2702020202021,125.235122020836" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-16.2702020202021,125.235122020836"
+                    Point2="-20.2702020202021,125.235122020836"
+                    Point3="-20.2702020202021,129.235122020836" />
+                  <mssgle:LineSegment
+                    End="-20.2702020202021,203.544372294373" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6994,18 +7028,18 @@ WHERE category_id = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\TABLAS SQL.PrecedenceConstraints[Constraint 4]"
-          TopLeft="178,387.98051948052">
+          TopLeft="177.166666666667,536.730519480519">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="80.9935064935064,0"
+              EndConnector="104.326839826839,0"
               Start="0,0"
-              End="73.4935064935064,0">
+              End="96.8268398268393,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="73.4935064935064,0" />
+                    End="96.8268398268393,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7016,30 +7050,18 @@ WHERE category_id = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\TABLAS SQL.PrecedenceConstraints[Constraint 5]"
-          TopLeft="325.493506493506,364.068181818182">
+          TopLeft="347.601911976912,514.901515151515">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-20.3665223665218,-63.6316738816743"
+              EndConnector="0,-46.131673881674"
               Start="0,0"
-              End="-20.3665223665218,-56.1316738816743">
+              End="0,-38.631673881674">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,-27.8158369408372" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,-27.8158369408372"
-                    Point2="0,-31.8158369408372"
-                    Point3="-4,-31.8158369408372" />
-                  <mssgle:LineSegment
-                    End="-16.3665223665218,-31.8158369408372" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-16.3665223665218,-31.8158369408372"
-                    Point2="-20.3665223665218,-31.8158369408372"
-                    Point3="-20.3665223665218,-35.8158369408372" />
-                  <mssgle:LineSegment
-                    End="-20.3665223665218,-56.1316738816743" />
+                    End="0,-38.631673881674" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7049,31 +7071,76 @@ WHERE category_id = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\TABLAS SQL.PrecedenceConstraints[Constraint 6]"
-          TopLeft="305.126984126985,258.436507936508">
+          Id="Package\TABLAS SQL.PrecedenceConstraints[Constraint 8]"
+          TopLeft="371.682546068751,101.65873015873">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="10.0277841639889,-57.4166666666665"
+              EndConnector="8.40006576386054,-54.1587301587298"
               Start="0,0"
-              End="10.0277841639889,-49.9166666666665">
+              End="8.40006576386054,-46.6587301587298">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,-24.7083333333333" />
+                    End="0,-23.0793650793649" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,-24.7083333333333"
-                    Point2="0,-28.7083333333333"
-                    Point3="4,-28.7083333333333" />
+                    Point1="0,-23.0793650793649"
+                    Point2="0,-27.0793650793649"
+                    Point3="4,-27.0793650793649" />
                   <mssgle:LineSegment
-                    End="6.02778416398894,-28.7083333333333" />
+                    End="4.40006576386054,-27.0793650793649" />
                   <mssgle:CubicBezierSegment
-                    Point1="6.02778416398894,-28.7083333333333"
-                    Point2="10.0277841639889,-28.7083333333333"
-                    Point3="10.0277841639889,-32.7083333333333" />
+                    Point1="4.40006576386054,-27.0793650793649"
+                    Point2="8.40006576386054,-27.0793650793649"
+                    Point3="8.40006576386054,-31.0793650793649" />
                   <mssgle:LineSegment
-                    End="10.0277841639889,-49.9166666666665" />
+                    End="8.40006576386054,-46.6587301587298" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="178,42"
+          Id="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG"
+          TopLeft="11.5079365079367,5.5" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="205,102"
+          Size="205,146"
+          Id="Package\TABLAS SQL\Sequence Container"
+          TopLeft="277.25,205" />
+        <EdgeLayout
+          Id="Package\TABLAS SQL.PrecedenceConstraints[Constraint 6]"
+          TopLeft="347.210317460318,426.769841269841">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="32.5396825396816,-75.7698412698413"
+              Start="0,0"
+              End="32.5396825396816,-68.2698412698413">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-33.8849206349207" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-33.8849206349207"
+                    Point2="0,-37.8849206349207"
+                    Point3="4,-37.8849206349207" />
+                  <mssgle:LineSegment
+                    End="28.5396825396816,-37.8849206349207" />
+                  <mssgle:CubicBezierSegment
+                    Point1="28.5396825396816,-37.8849206349207"
+                    Point2="32.5396825396816,-37.8849206349207"
+                    Point3="32.5396825396816,-41.8849206349207" />
+                  <mssgle:LineSegment
+                    End="32.5396825396816,-68.2698412698413" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7084,18 +7151,30 @@ WHERE category_id = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\TABLAS SQL.PrecedenceConstraints[Constraint 7]"
-          TopLeft="313.527780970883,159.019841269841">
+          TopLeft="379.75,205">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,-101.896825396825"
+              EndConnector="-8.06745393124913,-61.3412698412702"
               Start="0,0"
-              End="0,-94.3968253968254">
+              End="-8.06745393124913,-53.8412698412702">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,-94.3968253968254" />
+                    End="0,-26.6706349206351" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-26.6706349206351"
+                    Point2="0,-30.6706349206351"
+                    Point3="-4,-30.6706349206351" />
+                  <mssgle:LineSegment
+                    End="-4.06745393124913,-30.6706349206351" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-4.06745393124913,-30.6706349206351"
+                    Point2="-8.06745393124913,-30.6706349206351"
+                    Point3="-8.06745393124913,-34.6706349206351" />
+                  <mssgle:LineSegment
+                    End="-8.06745393124913,-53.8412698412702" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7107,10 +7186,10 @@ WHERE category_id = ?</property>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="427,466"
-          Size="427,509"
+          PanelSize="533,614"
+          Size="533,657"
           Id="Package\TABLAS SQL"
-          TopLeft="338.75,179.5" />
+          TopLeft="343.75,122.075757575758" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="180.589286450221,215.75">
@@ -7139,93 +7218,26 @@ WHERE category_id = ?</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="71.3214270995586,45.147057836856"
+              EndConnector="76.3214270995586,61.7228154126136"
               Start="0,0"
-              End="63.8214270995586,45.147057836856">
+              End="68.8214270995586,61.7228154126136">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="31.6607135497793,0" />
+                    End="34.1607135497793,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="31.6607135497793,0"
-                    Point2="35.6607135497793,0"
-                    Point3="35.6607135497793,4" />
+                    Point1="34.1607135497793,0"
+                    Point2="38.1607135497793,0"
+                    Point3="38.1607135497793,4" />
                   <mssgle:LineSegment
-                    End="35.6607135497793,41.147057836856" />
+                    End="38.1607135497793,57.7228154126136" />
                   <mssgle:CubicBezierSegment
-                    Point1="35.6607135497793,41.147057836856"
-                    Point2="35.6607135497793,45.147057836856"
-                    Point3="39.6607135497793,45.147057836856" />
+                    Point1="38.1607135497793,57.7228154126136"
+                    Point2="38.1607135497793,61.7228154126136"
+                    Point3="42.1607135497793,61.7228154126136" />
                   <mssgle:LineSegment
-                    End="63.8214270995586,45.147057836856" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="189,42"
-          Id="Package\Origen TXT\DFT_Metodo_Pago_Txt"
-          TopLeft="15.0000000000005,3.91666666666666" />
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="242,102"
-          Size="242,145"
-          Id="Package\Origen TXT"
-          TopLeft="842.083333333333,246.666666666667" />
-        <NodeLayout
-          Size="178,42"
-          Id="Package\Orgen MySQL\DFT_gastosStoreSTG"
-          TopLeft="19.4999999999999,2.08333333333329" />
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="205,99"
-          Size="205,142"
-          Id="Package\Orgen MySQL"
-          TopLeft="1178,252" />
-        <NodeLayout
-          Size="171,42"
-          Id="Package\Origen XLS\DFT_CreditcardSTG"
-          TopLeft="16.75,23.75" />
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="205,121"
-          Size="205,164"
-          Id="Package\Origen XLS"
-          TopLeft="1160.89285714286,491.25" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="765.75,434">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="76.3333333333335,-114.833333333333"
-              Start="0,0"
-              End="68.8333333333335,-114.833333333333">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="34.1666666666667,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="34.1666666666667,0"
-                    Point2="38.1666666666667,0"
-                    Point3="38.1666666666667,-4" />
-                  <mssgle:LineSegment
-                    End="38.1666666666667,-110.833333333333" />
-                  <mssgle:CubicBezierSegment
-                    Point1="38.1666666666667,-110.833333333333"
-                    Point2="38.1666666666667,-114.833333333333"
-                    Point3="42.1666666666667,-114.833333333333" />
-                  <mssgle:LineSegment
-                    End="68.8333333333335,-114.833333333333" />
+                    End="68.8214270995586,61.7228154126136" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7236,18 +7248,30 @@ WHERE category_id = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="1084.08333333333,321.083333333333">
+          TopLeft="1371.08333333333,386.666666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="93.9166666666665,0"
+              EndConnector="46.7380952380984,94.583333333333"
               Start="0,0"
-              End="86.4166666666665,0">
+              End="46.7380952380984,87.083333333333">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="86.4166666666665,0" />
+                    End="0,43.2916666666665" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,43.2916666666665"
+                    Point2="0,47.2916666666665"
+                    Point3="4,47.2916666666665" />
+                  <mssgle:LineSegment
+                    End="42.7380952380984,47.2916666666665" />
+                  <mssgle:CubicBezierSegment
+                    Point1="42.7380952380984,47.2916666666665"
+                    Point2="46.7380952380984,47.2916666666665"
+                    Point3="46.7380952380984,51.2916666666665" />
+                  <mssgle:LineSegment
+                    End="46.7380952380984,87.083333333333" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7257,31 +7281,31 @@ WHERE category_id = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="1280.5,394">
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="876.75,450.575757575758">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-17.1071428571427,97.25"
+              EndConnector="373.333333333333,-136.409090909091"
               Start="0,0"
-              End="-17.1071428571427,89.75">
+              End="365.833333333333,-136.409090909091">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,44.625" />
+                    End="182.666666666667,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,44.625"
-                    Point2="0,48.625"
-                    Point3="-4,48.625" />
+                    Point1="182.666666666667,0"
+                    Point2="186.666666666667,0"
+                    Point3="186.666666666667,-4" />
                   <mssgle:LineSegment
-                    End="-13.1071428571427,48.625" />
+                    End="186.666666666667,-132.409090909091" />
                   <mssgle:CubicBezierSegment
-                    Point1="-13.1071428571427,48.625"
-                    Point2="-17.1071428571427,48.625"
-                    Point3="-17.1071428571427,52.625" />
+                    Point1="186.666666666667,-132.409090909091"
+                    Point2="186.666666666667,-136.409090909091"
+                    Point3="190.666666666667,-136.409090909091" />
                   <mssgle:LineSegment
-                    End="-17.1071428571427,89.75" />
+                    End="365.833333333333,-136.409090909091" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7329,7 +7353,9 @@ WHERE category_id = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -7360,21 +7386,21 @@ WHERE category_id = ?</property>
           Text="Bikestores Stage"
           ParentId="Package\CATEGORIAS\DFT_DELETE"
           FontInfo="{assembly:Null}"
-          Size="116,40"
+          Size="116,NaN"
           Id="aab95297-e639-4af6-bd4c-bb38bd80d16b"
           TopLeft="69,49" />
         <AnnotationLayout
           Text="Bikestores"
           ParentId="Package\CATEGORIAS\DFT_DELETE"
           FontInfo="{assembly:Null}"
-          Size="83,60"
+          Size="83,NaN"
           Id="0e031daf-6dce-4d3e-8d5d-6a8e30abb7dd"
           TopLeft="146,175" />
         <AnnotationLayout
           Text="Bikestores Stage"
           ParentId="Package\CATEGORIAS\DFT_DELETE"
           FontInfo="{assembly:Null}"
-          Size="116,40"
+          Size="116,NaN"
           Id="139e2a62-23b5-49f3-9a9d-9686269c1516"
           TopLeft="56,298" />
       </GraphLayout>
@@ -7488,7 +7514,9 @@ WHERE category_id = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -7567,21 +7595,21 @@ WHERE category_id = ?</property>
           Text="BikeStores"
           ParentId="Package\CATEGORIAS\DFT_INS_UPD"
           FontInfo="{assembly:Null}"
-          Size="84,40"
+          Size="84,NaN"
           Id="0b257bb2-efb5-468d-bee4-c11bc96cf1a4"
           TopLeft="66,87" />
         <AnnotationLayout
           Text="BikeStoresSTAGE&#xA;TABLA: Categories_STG"
           ParentId="Package\CATEGORIAS\DFT_INS_UPD"
           FontInfo="{assembly:Null}"
-          Size="150,56"
+          Size="150,NaN"
           Id="41eded01-2b9e-4e88-9855-103e5ea664e0"
           TopLeft="3,219" />
         <AnnotationLayout
           Text="BikeStores STAGE"
           ParentId="Package\CATEGORIAS\DFT_INS_UPD"
           FontInfo="{assembly:Null}"
-          Size="121,40"
+          Size="121,NaN"
           Id="a19746e6-b633-4599-a1e9-7fed95920f95"
           TopLeft="24,345" />
       </GraphLayout>
@@ -7593,7 +7621,7 @@ WHERE category_id = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -7603,7 +7631,7 @@ WHERE category_id = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -7625,6 +7653,247 @@ WHERE category_id = ?</property>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\CATEGORIAS\DFT_INS_UPD\categories">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="142,42"
+          Id="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source"
+          TopLeft="291,56" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\OLE DB Destination"
+          TopLeft="292,211" />
+        <EdgeLayout
+          Id="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG.Paths[ODBC Source Output]"
+          TopLeft="362,98">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="15.5,113"
+              Start="0,0"
+              End="15.5,105.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,52.5"
+                    Point2="0,56.5"
+                    Point3="4,56.5" />
+                  <mssgle:LineSegment
+                    End="11.5,56.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="11.5,56.5"
+                    Point2="15.5,56.5"
+                    Point3="15.5,60.5" />
+                  <mssgle:LineSegment
+                    End="15.5,105.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\Origen TXT\DFT_Metodo_Pago_Txt">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Origen TXT\DFT_Metodo_Pago_Txt\MetodopagoSTG"
+          TopLeft="189,191" />
+        <NodeLayout
+          Size="159,42"
+          Id="Package\Origen TXT\DFT_Metodo_Pago_Txt\MetodoPago TXT"
+          TopLeft="208,47" />
+        <EdgeLayout
+          Id="Package\Origen TXT\DFT_Metodo_Pago_Txt.Paths[Flat File Source Output]"
+          TopLeft="287.5,89">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-20.5,102"
+              Start="0,0"
+              End="-20.5,94.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,47"
+                    Point2="0,51"
+                    Point3="-4,51" />
+                  <mssgle:LineSegment
+                    End="-16.5,51" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-16.5,51"
+                    Point2="-20.5,51"
+                    Point3="-20.5,55" />
+                  <mssgle:LineSegment
+                    End="-20.5,94.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="Origen TXT"
+          ParentId="Package\Origen TXT\DFT_Metodo_Pago_Txt"
+          FontInfo="{assembly:Null}"
+          Size="88,40"
+          Id="9d0c149f-d233-4e90-adbe-76ba2b34fb7c"
+          TopLeft="385,49" />
+        <AnnotationLayout
+          Text="B.D Bikerstore stage"
+          ParentId="Package\Origen TXT\DFT_Metodo_Pago_Txt"
+          FontInfo="{assembly:Null}"
+          Size="135,40"
+          Id="f6d700bf-fbc8-40fa-9ae2-f1c2145daf62"
+          TopLeft="388,182" />
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Origen TXT\DFT_Metodo_Pago_Txt\MetodopagoSTG">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Origen XLS\DFT_CreditcardSTG">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="139,42"
+          Id="Package\Origen XLS\DFT_CreditcardSTG\Excel Source"
+          TopLeft="342,50" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Origen XLS\DFT_CreditcardSTG\Data Conversion"
+          TopLeft="282,181" />
+        <NodeLayout
+          Size="148,42"
+          Id="Package\Origen XLS\DFT_CreditcardSTG\CreditCardSTG"
+          TopLeft="330,303" />
+        <EdgeLayout
+          Id="Package\Origen XLS\DFT_CreditcardSTG.Paths[Excel Source Output]"
+          TopLeft="411.5,92">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-51.5,89"
+              Start="0,0"
+              End="-51.5,81.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,40.5"
+                    Point2="0,44.5"
+                    Point3="-4,44.5" />
+                  <mssgle:LineSegment
+                    End="-47.5,44.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-47.5,44.5"
+                    Point2="-51.5,44.5"
+                    Point3="-51.5,48.5" />
+                  <mssgle:LineSegment
+                    End="-51.5,81.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Origen XLS\DFT_CreditcardSTG.Paths[Data Conversion Output]"
+          TopLeft="360,223">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="44,80"
+              Start="0,0"
+              End="44,72.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,36"
+                    Point2="0,40"
+                    Point3="4,40" />
+                  <mssgle:LineSegment
+                    End="40,40" />
+                  <mssgle:CubicBezierSegment
+                    Point1="40,40"
+                    Point2="44,40"
+                    Point3="44,44" />
+                  <mssgle:LineSegment
+                    End="44,72.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Origen XLS\DFT_CreditcardSTG\Excel Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Origen XLS\DFT_CreditcardSTG\CreditCardSTG">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -7730,7 +7999,7 @@ WHERE category_id = ?</property>
     design-time-name="Package\TABLAS SQL\DFT_BrandsSTG">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="130,42"
           Id="Package\TABLAS SQL\DFT_BrandsSTG\brandsSTG"
@@ -7758,21 +8027,23 @@ WHERE category_id = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <AnnotationLayout
           Text="BikeStores"
           ParentId="Package\TABLAS SQL\DFT_BrandsSTG"
           FontInfo="{assembly:Null}"
-          Size="84,40"
+          Size="84,NaN"
           Id="297aeb5f-a4ec-4a5f-bf3b-4fedc543f90d"
           TopLeft="146,127" />
         <AnnotationLayout
           Text="BikestoreSTAGE"
           ParentId="Package\TABLAS SQL\DFT_BrandsSTG"
           FontInfo="{assembly:Null}"
-          Size="111,40"
+          Size="111,NaN"
           Id="ca55cd90-5a37-4e93-a96a-d8f147927fd0"
           TopLeft="124,319" />
       </GraphLayout>
@@ -7808,7 +8079,7 @@ WHERE category_id = ?</property>
     design-time-name="Package\TABLAS SQL\DFT_Customers">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="148,42"
           Id="Package\TABLAS SQL\DFT_Customers\CustomersSTG"
@@ -7848,21 +8119,23 @@ WHERE category_id = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <AnnotationLayout
           Text="Bikestores"
           ParentId="Package\TABLAS SQL\DFT_Customers"
           FontInfo="{assembly:Null}"
-          Size="83,40"
+          Size="83,NaN"
           Id="b54566a9-b27a-4bb1-9e27-42d597e3691b"
           TopLeft="90,78" />
         <AnnotationLayout
           Text="BikestoresSTAGE"
           ParentId="Package\TABLAS SQL\DFT_Customers"
           FontInfo="{assembly:Null}"
-          Size="116,40"
+          Size="116,NaN"
           Id="dfc95571-6c51-4c51-9300-70923ce4cd0c"
           TopLeft="64,240" />
       </GraphLayout>
@@ -7898,7 +8171,7 @@ WHERE category_id = ?</property>
     design-time-name="Package\TABLAS SQL\DFT_factorySTG">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="131,42"
           Id="Package\TABLAS SQL\DFT_factorySTG\factorySTG"
@@ -7938,21 +8211,23 @@ WHERE category_id = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <AnnotationLayout
           Text="bikesotres"
           ParentId="Package\TABLAS SQL\DFT_factorySTG"
           FontInfo="{assembly:Null}"
-          Size="83,40"
+          Size="83,NaN"
           Id="241f5807-689f-45e5-8db0-435c5e6bd6e7"
           TopLeft="206,81" />
         <AnnotationLayout
           Text="BikestoreSTAGE"
           ParentId="Package\TABLAS SQL\DFT_factorySTG"
           FontInfo="{assembly:Null}"
-          Size="111,40"
+          Size="111,NaN"
           Id="138a4255-078a-4615-a9da-e3f1d8cbe90a"
           TopLeft="198,256" />
       </GraphLayout>
@@ -7985,96 +8260,18 @@ WHERE category_id = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
-    design-time-name="Package\Origen TXT\DFT_Metodo_Pago_Txt">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph">
-        <AnnotationLayout
-          Text="Origen TXT"
-          ParentId="Package\Origen TXT\DFT_Metodo_Pago_Txt"
-          FontInfo="{assembly:Null}"
-          Size="88,40"
-          Id="9d0c149f-d233-4e90-adbe-76ba2b34fb7c"
-          TopLeft="385,49" />
-        <AnnotationLayout
-          Text="B.D Bikerstore stage"
-          ParentId="Package\Origen TXT\DFT_Metodo_Pago_Txt"
-          FontInfo="{assembly:Null}"
-          Size="135,40"
-          Id="f6d700bf-fbc8-40fa-9ae2-f1c2145daf62"
-          TopLeft="388,182" />
-        <NodeLayout
-          Size="159,42"
-          Id="Package\Origen TXT\DFT_Metodo_Pago_Txt\MetodoPago TXT"
-          TopLeft="208,47" />
-        <NodeLayout
-          Size="156,42"
-          Id="Package\Origen TXT\DFT_Metodo_Pago_Txt\MetodopagoSTG"
-          TopLeft="189,191" />
-        <EdgeLayout
-          Id="Package\Origen TXT\DFT_Metodo_Pago_Txt.Paths[Flat File Source Output]"
-          TopLeft="287.5,89">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-20.5,102"
-              Start="0,0"
-              End="-20.5,94.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,47" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,47"
-                    Point2="0,51"
-                    Point3="-4,51" />
-                  <mssgle:LineSegment
-                    End="-16.5,51" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-16.5,51"
-                    Point2="-20.5,51"
-                    Point3="-20.5,55" />
-                  <mssgle:LineSegment
-                    End="-20.5,94.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <TaskHost
     design-time-name="Package\TABLAS SQL\DFT_ordersSTG">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="137,42"
-          Id="Package\TABLAS SQL\DFT_ordersSTG\sales_orders"
-          TopLeft="337.428577157916,60.4117655531346" />
-        <AnnotationLayout
-          Text="BikeStore&#xA;"
-          ParentId="Package\TABLAS SQL\DFT_ordersSTG"
-          FontInfo="{assembly:Null}"
-          Size="78,56"
-          Id="1e2af935-f1e0-46cb-9a46-a1d3ab49259e"
-          TopLeft="246.428575625225,63.4705891254452" />
-        <AnnotationLayout
-          Text="BikeStoreSTAGE&#xA;"
-          ParentId="Package\TABLAS SQL\DFT_ordersSTG"
-          FontInfo="{assembly:Null}"
-          Size="112,56"
-          Id="d9a0d601-e5a0-4479-bfdb-9b0f3bcc6f30"
-          TopLeft="182.142860244732,256.835296294763" />
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="171,42"
           Id="Package\TABLAS SQL\DFT_ordersSTG\OLE DB Destination"
           TopLeft="356.666666666667,252.5" />
+        <NodeLayout
+          Size="137,42"
+          Id="Package\TABLAS SQL\DFT_ordersSTG\sales_orders"
+          TopLeft="337.428577157916,60.4117655531346" />
         <EdgeLayout
           Id="Package\TABLAS SQL\DFT_ordersSTG.Paths[OLE DB Source Output]"
           TopLeft="405.928577157916,102.411765553135">
@@ -8106,12 +8303,41 @@ WHERE category_id = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <AnnotationLayout
+          Text="BikeStore&#xA;"
+          ParentId="Package\TABLAS SQL\DFT_ordersSTG"
+          FontInfo="{assembly:Null}"
+          Size="78,NaN"
+          Id="1e2af935-f1e0-46cb-9a46-a1d3ab49259e"
+          TopLeft="246.428575625225,63.4705891254452" />
+        <AnnotationLayout
+          Text="BikeStoreSTAGE&#xA;"
+          ParentId="Package\TABLAS SQL\DFT_ordersSTG"
+          FontInfo="{assembly:Null}"
+          Size="112,NaN"
+          Id="d9a0d601-e5a0-4479-bfdb-9b0f3bcc6f30"
+          TopLeft="182.142860244732,256.835296294763" />
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\TABLAS SQL\DFT_ordersSTG\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\TABLAS SQL\DFT_ordersSTG\sales_orders">
     <Properties>
@@ -8129,7 +8355,7 @@ WHERE category_id = ?</property>
     design-time-name="Package\TABLAS SQL\DFT_Products">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="120,42"
           Id="Package\TABLAS SQL\DFT_Products\Products"
@@ -8157,21 +8383,23 @@ WHERE category_id = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <AnnotationLayout
           Text="Bikestores"
           ParentId="Package\TABLAS SQL\DFT_Products"
           FontInfo="{assembly:Null}"
-          Size="83,40"
+          Size="83,NaN"
           Id="98de0b77-da0a-492f-afe1-cb997a17e680"
           TopLeft="128,103" />
         <AnnotationLayout
           Text="BikestoreSTAGE&#xA;"
           ParentId="Package\TABLAS SQL\DFT_Products"
           FontInfo="{assembly:Null}"
-          Size="111,56"
+          Size="111,NaN"
           Id="72d1ed2f-0849-45b0-8ac2-7169c59774e3"
           TopLeft="95,211" />
       </GraphLayout>
@@ -8207,7 +8435,7 @@ WHERE category_id = ?</property>
     design-time-name="Package\TABLAS SQL\DFT_StaffSTG">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="120,42"
           Id="Package\TABLAS SQL\DFT_StaffSTG\StaffSTG"
@@ -8235,28 +8463,30 @@ WHERE category_id = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <AnnotationLayout
           Text="BikeStore"
           ParentId="Package\TABLAS SQL\DFT_StaffSTG"
           FontInfo="{assembly:Null}"
-          Size="79,40"
+          Size="79,NaN"
           Id="3a774f47-ad8d-4fd4-af5d-02b9a7deb443"
           TopLeft="133,93" />
         <AnnotationLayout
           Text="BikeStoreSTAGE&#xA;"
           ParentId="Package\TABLAS SQL\DFT_StaffSTG"
           FontInfo="{assembly:Null}"
-          Size="112,56"
+          Size="112,NaN"
           Id="0b4c48c5-1564-4a36-a1d2-4a5506e06c0e"
           TopLeft="116,214" />
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\TABLAS SQL\DFT_StaffSTG\StaffSTG">
+    design-time-name="Package\TABLAS SQL\DFT_StaffSTG\Staffs">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -8269,7 +8499,7 @@ WHERE category_id = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\TABLAS SQL\DFT_StaffSTG\Staffs">
+    design-time-name="Package\TABLAS SQL\DFT_StaffSTG\StaffSTG">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -8285,7 +8515,7 @@ WHERE category_id = ?</property>
     design-time-name="Package\TABLAS SQL\DFT_stocks">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="127,42"
           Id="Package\TABLAS SQL\DFT_stocks\stocksSTG"
@@ -8325,21 +8555,23 @@ WHERE category_id = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <AnnotationLayout
           Text="Bikestores&#xA;&#xA;"
           ParentId="Package\TABLAS SQL\DFT_stocks"
           FontInfo="{assembly:Null}"
-          Size="83,72"
+          Size="83,NaN"
           Id="8c67e037-0b4b-4f67-b881-21d789f38941"
           TopLeft="54,64" />
         <AnnotationLayout
           Text="BikestoreSTAGE"
           ParentId="Package\TABLAS SQL\DFT_stocks"
           FontInfo="{assembly:Null}"
-          Size="111,40"
+          Size="111,NaN"
           Id="d5750f78-5b33-408b-b31e-ee534dda3388"
           TopLeft="45,201" />
       </GraphLayout>
@@ -8375,7 +8607,7 @@ WHERE category_id = ?</property>
     design-time-name="Package\TABLAS SQL\DFT_StoresSTG">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="128,42"
           Id="Package\TABLAS SQL\DFT_StoresSTG\StoresSTG"
@@ -8415,21 +8647,23 @@ WHERE category_id = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <AnnotationLayout
           Text="Bikestores"
           ParentId="Package\TABLAS SQL\DFT_StoresSTG"
           FontInfo="{assembly:Null}"
-          Size="83,40"
+          Size="83,NaN"
           Id="50d24ea4-2ec0-4dea-b0d4-7d0170aa1f13"
           TopLeft="184,121" />
         <AnnotationLayout
           Text="BikeStoreSATGE"
           ParentId="Package\TABLAS SQL\DFT_StoresSTG"
           FontInfo="{assembly:Null}"
-          Size="112,40"
+          Size="112,NaN"
           Id="6185e3c5-58ca-495e-9c14-06045b423ee6"
           TopLeft="182,238" />
       </GraphLayout>
@@ -8462,185 +8696,7 @@ WHERE category_id = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\TABLAS SQL\DFT_ordersSTG\OLE DB Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Origen TXT\DFT_Metodo_Pago_Txt\MetodopagoSTG">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Origen XLS\DFT_CreditcardSTG">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="156,42"
-          Id="Package\Origen XLS\DFT_CreditcardSTG\Data Conversion"
-          TopLeft="282,181" />
-        <NodeLayout
-          Size="139,42"
-          Id="Package\Origen XLS\DFT_CreditcardSTG\Excel Source"
-          TopLeft="342,50" />
-        <EdgeLayout
-          Id="Package\Origen XLS\DFT_CreditcardSTG.Paths[Excel Source Output]"
-          TopLeft="411.5,92">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-51.5,89"
-              Start="0,0"
-              End="-51.5,81.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,40.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,40.5"
-                    Point2="0,44.5"
-                    Point3="-4,44.5" />
-                  <mssgle:LineSegment
-                    End="-47.5,44.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-47.5,44.5"
-                    Point2="-51.5,44.5"
-                    Point3="-51.5,48.5" />
-                  <mssgle:LineSegment
-                    End="-51.5,81.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="148,42"
-          Id="Package\Origen XLS\DFT_CreditcardSTG\CreditCardSTG"
-          TopLeft="330,303" />
-        <EdgeLayout
-          Id="Package\Origen XLS\DFT_CreditcardSTG.Paths[Data Conversion Output]"
-          TopLeft="360,223">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="44,80"
-              Start="0,0"
-              End="44,72.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,36" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,36"
-                    Point2="0,40"
-                    Point3="4,40" />
-                  <mssgle:LineSegment
-                    End="40,40" />
-                  <mssgle:CubicBezierSegment
-                    Point1="40,40"
-                    Point2="44,40"
-                    Point3="44,44" />
-                  <mssgle:LineSegment
-                    End="44,72.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Origen XLS\DFT_CreditcardSTG\Excel Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Origen XLS\DFT_CreditcardSTG\CreditCardSTG">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Orgen MySQL\DFT_gastosStoreSTG">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="139,42"
-          Id="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store"
-          TopLeft="277,100" />
-        <NodeLayout
-          Size="158,42"
-          Id="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_storeSTG"
-          TopLeft="267,252" />
-        <EdgeLayout
-          Id="Package\Orgen MySQL\DFT_gastosStoreSTG.Paths[ODBC Source Output]"
-          TopLeft="346.25,142">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,110"
-              Start="0,0"
-              End="0,102.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,102.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_store">
+    design-time-name="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\ODBC Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -8648,7 +8704,7 @@ WHERE category_id = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Orgen MySQL\DFT_gastosStoreSTG\gastos_storeSTG">
+    design-time-name="Package\TABLAS SQL\Sequence Container\DFT_gastosStoreSTG\OLE DB Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
